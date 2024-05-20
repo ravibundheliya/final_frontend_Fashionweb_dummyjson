@@ -79,8 +79,8 @@ function Page1() {
                   data.map((item, index) => {
                     return (
                       <Col key={item.id} className='col-12 col-sm-6 col-md-4'>
-                        <div className='text-center'>
-                          <div className="card" style={{ width: '100%' }}>
+                        <div className='d-grid justify-content-center w-100'>
+                          <div className="card w-100">
                             <div className='imagebox'>
                               <img src={item.thumbnail} className="card-img-top pimage" alt={"Image of " + item.title} />
                             </div>

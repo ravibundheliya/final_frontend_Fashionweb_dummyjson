@@ -1,5 +1,3 @@
-
-
 /* gothic-a1-regular - latin */
 @font-face {
   font-display: swap;
@@ -17,6 +15,7 @@
   margin: 0;
   font-family: 'Gothic A1';
 }
+
 li,
 ul,
 a {
@@ -416,23 +415,8 @@ h4 {
 
 
 
-@media (min-width: 992px) and (max-width: 1200px) {
-  .card {
-    width: 14rem !important;
-  }
-}
-
-
-@media (min-width: 768px) and (max-width: 992px) {
-  .card {
-    width: 16rem !important;
-  }
-}
-
 @media (min-width: 576px) and (max-width: 768px) {
-  .card {
-    width: 12rem !important;
-  }
+
 
   .icn div {
     width: 2rem;
@@ -459,9 +443,6 @@ h4 {
 }
 
 @media (max-width: 576px) {
-  .card {
-    width: 12rem !important;
-  }
 
   .icn div {
     width: 2rem;

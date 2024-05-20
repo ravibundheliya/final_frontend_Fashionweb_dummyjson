@@ -1,0 +1,61 @@
+.logo img {
+  height: 30px;
+}
+
+.phl {
+  gap: 1.5rem;
+  color: black;
+  font-weight: 900;
+}
+
+.phl a {
+  color: black;
+  transition: 0.3s;
+}
+
+.phl a:hover {
+  color: orange;
+}
+
+/* Footer */
+
+.footerclr {
+  background-color: rgb(244, 244, 244);
+}
+
+.f1 {
+  display: grid;
+  gap: 10px;
+}
+
+.ft {
+  font-weight: 900;
+}
+
+.fd {
+  font-size: 14px;
+}
+
+.fd a{
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  transition: .3s;
+}
+.fd:hover .newfd{
+  color: orangered;
+}
+
+.fb input {
+  padding: 10px 15px;
+}
+
+.fsbt {
+  border: 0px;
+  padding: 13px 15px !important;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}

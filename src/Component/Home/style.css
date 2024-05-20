@@ -1,0 +1,153 @@
+/* Slider */
+
+.sldimage {
+    height: 600px;
+    width: 100%;
+    align-items: center;
+}
+
+.sldimage img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    top: 0%;
+    bottom: 5%;
+    right: 60%;
+    display: grid;
+    align-items: center;
+    text-align: left;
+}
+
+.carousel-caption h3 {
+    font-weight: 900;
+    font-size: 100px;
+    letter-spacing: 5px;
+}
+
+.carousel-caption p {
+    font-weight: 900;
+    font-size: 25px;
+    padding-left: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.sldbtn {
+    width: 200px;
+    text-transform: uppercase;
+    background-color: white;
+    color: black;
+    transition: .3s;
+    font-weight: 900;
+    font-size: 14px;
+    border-width: 0;
+    letter-spacing: 2px;
+}
+
+.sldbtn:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Topproductsslide */
+.prdback {
+    display: grid;
+    justify-content: center;
+}
+
+.new_fashion {
+    margin: 0px 0px 50px 0px;
+}
+
+.cnvimg {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 575px;
+    background-color: #BBBDA8;
+    position: relative;
+}
+
+.backimg {
+    padding: 0;
+    height: 100%;
+}
+
+.imgcnt {
+    position: absolute;
+}
+
+.item {
+    padding: 3rem;
+}
+
+.item h4 {
+    line-height: 25px;
+    color: #787878;
+    margin: 0;
+}
+
+.owl-dots {
+    position: absolute;
+}
+.clientdata{
+    align-items: center;
+    gap: 10px;
+}
+.clientdata img{
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+.newsltr{
+    padding: 5px 10px;
+    width: 50%;
+    border-width: 0px;
+}
+@media(max-width: 990px) {
+    .sldimage img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        opacity: 0 !important;
+    }
+}
+
+@media(min-width: 576px)and(max-width: 990px) {
+    .carousel-caption {
+        right: 15%;
+        left: 15%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 75px;
+    }
+}
+
+@media(max-width: 576px) {
+    .carousel-caption {
+        right: 15%;
+        left: 15%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 50px;
+    }
+
+    .sld-ttl {
+        font-size: 30px;
+    }
+    .newsltr{
+        padding: 2px 5px;
+        width: 100%;
+        border-width: 0px;
+    }
+}

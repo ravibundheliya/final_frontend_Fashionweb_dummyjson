@@ -1,0 +1,237 @@
+.pagesearch {
+    border: 1px solid lightgray;
+}
+
+ul,
+li {
+    padding: 0;
+    list-style-type: none;
+}
+
+.incatlist {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.incatlist:hover {
+    font-weight: 900;
+    color: orangered;
+}
+
+.card {
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.imagebox {
+    width: 100%;
+    height: 250px;
+}
+
+.imagebox img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbimage {
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.thumbimage img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagelist {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prdimage {
+    padding: 0;
+    height: 100px;
+    width: 20%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.prdimage img {
+    height: 100%;
+    
+    object-fit: cover;
+}
+
+
+.qtyvalue {
+    height: 50px;
+    width: 70px;
+    border: 1px solid lightgray;
+    font-size: 18px;
+    color: grey;
+    padding: 20px;
+}
+
+.newqtyvalue {
+    height: 40px;
+    width: 80px;
+}
+
+.qtybtn button {
+    height: 25px;
+    width: 25px;
+    border: 1px solid lightgray;
+    background-color: white;
+    transition: .3s;
+}
+
+.newqtybtn button {
+    height: 20px;
+}
+
+.qtybtn button:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.addtobtn {
+    background-color: #212529;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .3s;
+    border-radius: 0px;
+    border-width: 0;
+}
+
+
+.addtobtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.newaddtobtn:hover {
+    background-color: rgb(255, 90, 90);
+    color: white;
+}
+
+.heart {
+    gap: 5px;
+}
+
+.heart div {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.heart div:hover {
+    color: #C2572B;
+}
+
+.ctg-det div {
+    padding-top: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ctg-det div:hover {
+    text-decoration: underline;
+}
+
+.drplist div {
+    cursor: pointer;
+    color: grey;
+    transition: .3s;
+}
+
+.drplist div:hover {
+    color: black !important;
+}
+
+.reviewlist input,
+textarea {
+    border: 1px solid lightgray !important;
+}
+
+.rw-start i {
+    color: lightgray;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.rw-start i:hover {
+    color: #C2572B;
+}
+
+.crtbtn {
+    background-color: black;
+    color: white;
+}
+
+/* Rating css */
+.star-rating {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-outer::before {
+    content: '★★★★★';
+    /* Use Unicode stars */
+    color: #ccc;
+    font-size: 24px;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-inner::before {
+    content: '★★★★★';
+    /* Use Unicode stars */
+    color: #C2572B;
+    font-size: 24px;
+}
+
+.rating {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+@media(min-width: 576px) and (max-width: 768px) {
+    .thumbimage {
+        height: 300px;
+    }
+
+
+}
+
+@media(max-width: 576px) {
+    .thumbimage {
+        height: 300px;
+    }
+
+    .prdimage {
+        padding: 0;
+        height: 75px;
+        width: 20%;
+        cursor: pointer;
+    }
+}

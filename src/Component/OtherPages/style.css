@@ -1,0 +1,288 @@
+.blgtxt {
+    gap: 35px;
+}
+
+.txt-light {
+    color: #787878;
+}
+
+.blgtxt h3 {
+    margin-bottom: 0px;
+    font-size: 2rem;
+}
+
+.blgtxt p {
+    font-size: 15px;
+    color: grey;
+    margin-bottom: 0px;
+}
+
+.inblgtxt {
+    gap: 15px;
+    border: 1px solid lightgray;
+    padding: 2rem;
+}
+
+.inblgtxt i {
+    font-size: 2.5rem;
+    color: lightgray;
+}
+
+.inblgtxt h4 {
+    font-size: 20px;
+
+}
+
+.preblog {
+    display: flex;
+    gap: 25px;
+}
+
+.lighttxt {
+    color: gray;
+    font-size: 14px;
+}
+
+.icn3 {
+    gap: 10px;
+}
+
+.icn3 a {
+    font-size: 14px;
+    color: black;
+    transition: .3s;
+}
+
+.icn3 a:hover {
+    color: orange;
+}
+
+.aft::after {
+    content: 'NOV 25, 2020';
+    font-size: 10px;
+    padding-left: 10px;
+    font-weight: 100;
+}
+
+#txtarea {
+    padding: .75rem;
+    width: 100%;
+}
+
+.sbtbtn {
+    padding: 1rem 4rem;
+    font-weight: 900;
+    font-size: 12px;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    transition: 0.3s;
+    letter-spacing: 3px;
+}
+
+.sbtbtn:hover {
+    background-color: black;
+}
+
+.searchbtn {
+    border: 1px solid lightgrey;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.searchbtn input {
+    border: 0px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.ctglist {
+    list-style: none;
+    padding-top: 1rem;
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+.ctglist li {
+    padding-bottom: 2px;
+}
+
+.ctglist li a {
+    color: rgb(72, 72, 72);
+    font-size: 15px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.ctglist li a:hover {
+    color: #c2572b;
+}
+
+.sldcontent {
+    gap: 10px;
+}
+
+.sldcontenttext {
+    color: black;
+    transition: 0.3s;
+}
+
+.sldcontenttext:hover {
+    color: #c2572b;
+}
+
+.txt12 {
+    color: #808080;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.f-700 {
+    font-weight: 700;
+}
+
+.f-900 {
+    font-weight: 900;
+}
+
+.abt {
+    color: white;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    padding: .5rem .5rem;
+    background-color: #AAB9C0;
+}
+
+.cntbtn {
+    padding: 1rem 3rem;
+    font-weight: 900;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    transition: 0.3s;
+    letter-spacing: 3px;
+}
+
+.cntbtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.itm-cnt {
+    display: flex;
+    justify-content: center;
+}
+
+.cnvimg {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 575px;
+    background-color: #BBBDA8;
+    position: relative;
+}
+
+.backimg {
+    padding: 0;
+    height: 100%;
+}
+
+.imgcnt {
+    position: absolute;
+}
+
+.item {
+    padding: 3rem;
+}
+
+.item h4 {
+    line-height: 25px;
+    color: #787878;
+    margin: 0;
+}
+
+.owl-dots {
+    position: absolute;
+}
+
+.abt1 {
+    color: #c2572b;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.abt2 {
+    font-weight: 900;
+    font-size: 2.5rem;
+}
+
+.lastcnt1 {
+    font-size: 12px;
+    font-weight: 900;
+    gap: 10px;
+    color: #787878;
+}
+
+.lastcnt1 a {
+    color: #787878;
+}
+
+.lastcnt2 a {
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 22px;
+}
+
+.allcnt {
+    padding: 0rem 6rem;
+}
+
+.cntdtl {
+    gap: 20px;
+    justify-content: start;
+    align-items: center;
+}
+
+.icnht {
+    font-size: 56px;
+    color: #787878;
+}
+
+
+
+.cntformttl {
+    font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+    .allcnt {
+        padding: 0rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .preblog {
+        display: grid;
+        gap: 25px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .cntw {
+        padding: 0rem 1rem !important;
+    }
+
+    .blgtxt h3 {
+        font-size: 1.3rem;
+    }
+
+    .bigtxt-res {
+        font-size: 2rem;
+    }
+
+    .allcnt {
+        padding: 0rem 1rem;
+    }
+}

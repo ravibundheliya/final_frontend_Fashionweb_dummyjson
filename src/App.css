@@ -1,38 +1,487 @@
-.App {
+
+
+/* gothic-a1-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Gothic A1';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/gothic-a1-v13-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Gothic A1';
+}
+li,
+ul,
+a {
+  text-decoration: none;
+}
+
+.ovr {
+  overflow: hidden;
+}
+
+.pup {
+  position: relative;
+}
+
+.pin {
+  position: absolute;
+  color: black;
+  background-color: white;
+  bottom: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 15px;
+  width: 80%;
+  text-align: left;
+  transition: 0.5s;
+  box-shadow: 0 0 10px grey;
+}
+
+.pin h4 {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.pin a {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgb(72, 72, 72);
+  font-size: 13px;
+  text-decoration: solid;
+  transition: .3s;
+}
+
+.pin a:hover {
+  color: rgb(255, 123, 0);
+}
+
+.pimg {
+  transition: 0.5s;
+}
+
+.ppcolor {
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.402);
+  transition: 1s;
+  opacity: 0;
+}
+
+.pup:hover .pimg {
+  transform: scale(1.1);
+}
+
+.pup:hover .pin {
+  bottom: 8%;
+}
+
+.pup:hover .ppcolor {
+  opacity: 1;
+}
+
+#offcanvasNavbarLabel-expand-lg {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 24px;
+}
+
+
+
+.abt h1 {
+  font-weight: 900;
+}
+
+.abt p {
+  padding: 0px 100px;
+}
+
+.frm {
+  padding: 10px 50px;
+}
+
+.frm h1 {
   text-align: center;
+  padding-bottom: 2rem;
+  font-weight: 900;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bxfrm {
+  box-shadow: 0 0 20px grey;
+  padding: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+  border: 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-img-top {
+  position: relative;
+}
+
+.icn {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  opacity: 0;
+  justify-content: space-evenly;
+  transition: 0.5s;
+}
+
+.card:hover .icn {
+  opacity: 1;
+  bottom: 25%;
+}
+
+.icn div {
+  background-color: white;
+  box-shadow: 0 0 10px rgb(139, 139, 139);
+  color: black;
+  font-size: 20px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.3s;
+}
+
+.icn div i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.icn div:hover {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card-img-top:hover .icn {
+  display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* new icon */
+.icn2 {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  display: flex;
+  opacity: 0;
+  justify-content: space-evenly;
+  transition: 0.5s;
+}
+
+.card:hover .icn2 {
+  opacity: 1;
+  bottom: 25%;
+}
+
+.icn2 div {
+  background-color: white;
+  box-shadow: 0 0 10px rgb(139, 139, 139);
+  color: black;
+  font-size: 20px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.3s;
+}
+
+.icn2 div i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.icn2 div:hover {
+  background-color: black;
+  color: white;
+}
+
+.card-img-top:hover .icn2 {
+  display: block;
+}
+
+/* over */
+.card-body div,
+h4 {
+  font-size: 16px;
+}
+
+.card-title {
+  transition: 0.3s;
+  font-weight: 700;
+}
+
+.card-title:hover {
+  color: orange;
+}
+
+
+
+.owl-nav button span {
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.owl-nav button span:hover {
+  background-color: black;
+}
+
+.sld-ttl {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.sld-dtl a {
+  color: black;
+  font-weight: 900;
+}
+
+.ctg {
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  transition: .3s;
+  overflow: hidden;
+  box-shadow: 0 0 1px grey;
+}
+
+.ctg:hover {
+  box-shadow: 0 0 20px grey;
+}
+
+.ctg img {
+  width: 50%;
+  transition: .3s;
+}
+
+.ctg h4 {
+  padding-top: 1rem;
+  font-weight: 900;
+  margin-bottom: 0;
+  color: rgb(139, 139, 139);
+}
+
+.new_fashion {
+  margin: 100px 0px;
+}
+
+.new_fashion_img {
+  /* width: 100%; */
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+}
+
+.new_fashion_perent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.new_fashion a {
+  text-decoration: none;
+}
+
+.new_fashion_font {
+  position: absolute;
+  text-align: center;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.stkbtn {
+  color: black;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 1rem 2rem;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.stkbtn:hover {
+  background-color: black;
+  color: white;
+}
+
+.new_fashion_p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #c2572b;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.new_fashion h3 {
+  font-size: 2.8rem;
+  text-transform: uppercase;
+}
+
+.cntimg {
+  position: relative;
+  width: 100%;
+}
+
+.cntimg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.instaimg {
+  position: absolute;
+  font-size: 4rem;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-image: linear-gradient(#f9ce347b, #ee2a7c76, #6228d781);
+  width: 100%;
+  transition: 1s;
+  opacity: 0;
+  color: white;
+}
+
+.instaimg i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cntimg:hover .instaimg {
+  opacity: 1;
+}
+
+.cntbox {
+  position: relative;
+}
+
+.outbox {
+  text-align: center;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 30%;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1px grey;
+  transform: translate(-50%, -50%);
+}
+
+.outbox h4 {
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.outbox a {
+  color: black;
+  transition: .3s;
+}
+
+.outbox a:hover {
+  color: orange;
+}
+
+.f-900 {
+  font-weight: 900;
+}
+
+
+
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .card {
+    width: 14rem !important;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .card {
+    width: 16rem !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .card {
+    width: 12rem !important;
+  }
+
+  .icn div {
+    width: 2rem;
+    font-size: 1rem;
+    height: 2rem;
+  }
+
+  .card:hover .icn {
+    opacity: 1;
+    bottom: 30%;
+  }
+}
+
+@media(max-width: 992px) {
+  .outbox {
+    width: 70%;
+  }
+}
+
+@media(max-width: 768px) {
+  .sld {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 12rem !important;
+  }
+
+  .icn div {
+    width: 2rem;
+    font-size: 1rem;
+    height: 2rem;
+  }
+
+  .card:hover .icn {
+    opacity: 1;
+    bottom: 30%;
+  }
+
+}
+
+@media(max-width: 400px) {
+  .outbox h4 {
+    font-size: 1rem;
+  }
+
+  .outbox a {
+    font-size: 0.8rem;
   }
 }

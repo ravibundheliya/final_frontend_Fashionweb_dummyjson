@@ -20,11 +20,11 @@ function Testimonialslide() {
                         <Container className='imgcnt'>
                             <Row>
                                 <Col className='col-12 ps-4 pe-4 col-lg-6'>
-                                    <div className=''>
+                                    <div>
                                         <h1 className='text-light f-900'>Client's Quote</h1>
                                         <div className='text-light'>Travelling salesman and above it there hung a picture</div>
-                                        <div className='mt-4 bg-light'>
-                                            <OwlCarousel className='owl-theme' {...obj}>
+                                        <div className='mt-4 bg-light' data-aos="zoom-in-right">
+                                            <OwlCarousel className='owl-theme' {...obj} >
                                                 <div className='item'>
                                                     <h4>"Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and"</h4>
                                                     <div className='d-flex clientdata text-center justify-content-md-center pt-2'>

@@ -33,14 +33,14 @@ const obj = {
 function Topproductsslide() {
     return (
         <div>
-            <Container>
-                <Row>
-                    <Col className='col-12 col-md-8 sld-ttl'>Top Selling Products</Col>
-                    <Col className='col-12 col-md-4 sld-dtl text-start text-md-end pt-0 pt-md-4 text-uppercase'><a href="/">more products</a></Col>
+            <Container style={{overflow:"hidden"}}>
+                <Row style={{overflow:"hidden"}}>
+                    <Col className='col-12 col-md-8 sld-ttl' data-aos="slide-up" data-aos-duration="600">Top Selling Products</Col>
+                    <Col className='col-12 col-md-4 sld-dtl text-start text-md-end pt-0 pt-md-4 text-uppercase' data-aos="slide-up" data-aos-duration="600"><a href="/">more products</a></Col>
                 </Row>
-                <hr />
+                <hr data-aos="slide-left"/>
             </Container>
-            <Container className='pt-5 pb-5'>
+            <Container className='pb-5' data-aos="zoom-in-left" data-aos-duration="1000">
                 <OwlCarousel className='owl-theme'{...obj}>
                     <div className='item text-center prdback'>
                         <Card style={{ width: '100%' }}>

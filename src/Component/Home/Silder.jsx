@@ -9,7 +9,7 @@ function Silder() {
             <Carousel fade  interval={2000}>
                 <Carousel.Item className='sldimage'>
                     <img src={require('../../img/asset 20.jpeg')} alt="" />
-                    <Carousel.Caption>
+                    <Carousel.Caption data-aos="zoom-in">
                         <p>Stylish Shop</p>
                         <h3>Great Lookbook 2021</h3>
                         <button className='sldbtn py-3 ms-2'>Shop now</button>
@@ -17,7 +17,7 @@ function Silder() {
                 </Carousel.Item>
                 <Carousel.Item className='sldimage'>
                     <img src={require('../../img/asset 21.jpeg')} alt="" />
-                    <Carousel.Caption>
+                    <Carousel.Caption data-aos="zoom-in">
                         <p>Stylish Shop</p>
                         <h3>Stylish Coat</h3>
                         <button className='sldbtn py-3 ms-2'>Shop now</button>
@@ -25,7 +25,7 @@ function Silder() {
                 </Carousel.Item>
                 <Carousel.Item className='sldimage'>
                     <img src={require('../../img/asset 22.jpeg')} alt="" />
-                    <Carousel.Caption>
+                    <Carousel.Caption data-aos="zoom-in">
                         <p>Stylish Shop</p>
                         <h3>Trendy Collection</h3>
                         <button className='sldbtn py-3 ms-2'>Shop now</button>

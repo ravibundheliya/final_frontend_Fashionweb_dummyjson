@@ -54,7 +54,6 @@ function ProductDetails() {
         }
 
     }
-    console.log(cartvalue);
     const starPercentage = (data.rating / 5) * 100;
     const starPercentageRounded = `${Math.round(starPercentage)}%`;
 

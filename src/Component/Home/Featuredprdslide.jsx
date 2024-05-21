@@ -33,15 +33,15 @@ const obj = {
 function Featuredprdslide() {
     return (
         <div>
-            <Container>
-                <Row>
-                    <Col className='col-12 col-md-8 sld-ttl'>Featured Products</Col>
-                    <Col className='col-12 col-md-4 sld-dtl text-start text-md-end pt-0 pt-md-4 text-uppercase'><a href="/">more products</a></Col>
+            <Container style={{overflow:"hidden"}}>
+                <Row style={{overflow:"hidden"}}>
+                    <Col className='col-12 col-md-8 sld-ttl' data-aos="slide-up">Featured Products</Col>
+                    <Col className='col-12 col-md-4 sld-dtl text-start text-md-end pt-0 pt-md-4 text-uppercase'  data-aos="slide-up" ata-aos-duration="600"><a href="/">more products</a></Col>
                 </Row>
-                <hr />
+                <hr  data-aos="slide-right"/>
             </Container>
-            <Container className='pt-5 pb-5'>
-                <OwlCarousel className='owl-theme'{...obj}>
+            <Container className='pb-5'>
+                <OwlCarousel className='owl-theme'{...obj} data-aos="zoom-in-right">
                     <div className='item text-center prdback'>
                         <Card style={{ width: '100%' }}>
                             <Card.Img variant="top" src={require('../../img/asset 12.jpeg')} width={"100%"} />

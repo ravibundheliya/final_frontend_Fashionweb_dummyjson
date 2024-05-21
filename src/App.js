@@ -11,11 +11,20 @@ import Contact from './Component/OtherPages/Contact';
 import Page1 from './Component/Product_cart_page/Page1';
 import ProductDetails from './Component/Product_cart_page/ProductDetails';
 import Cartpage from './Component/Product_cart_page/Cartpage';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function App() {
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+      offset: 100
+    });
+  }, []);
   return (
     <>
-      
       <Container fluid>
         <Row className='text-center'>
           <Col className='text-light pt-3 pb-3' style={{ backgroundColor: '#1f1f1f', fontSize: '14px' }}>

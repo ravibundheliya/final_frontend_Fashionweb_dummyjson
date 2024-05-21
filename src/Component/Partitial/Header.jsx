@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './style.css';
 import { useSelector } from 'react-redux';
@@ -32,24 +32,24 @@ function Header() {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="phl justify-content-center flex-grow-1 pe-3">
+                <Nav className="phl justify-content-center flex-grow-1 pe-3" style={{alignItems:"center"}}>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/">Home</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/productpage">Products</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/productpage">Products</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/blog">Blog</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/about">About</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/about">About</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/contact">Contact</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/cart">Cart ({cartvalue.length})</Nav.Link>
+                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/cart">Cart ({cartvalue.length})</NavLink>
                   </Nav.Item>
                 </Nav>
                 <Form className="d-flex">

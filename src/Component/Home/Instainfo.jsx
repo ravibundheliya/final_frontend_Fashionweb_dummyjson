@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 function Instainfo() {
   return (
-    <section className='pt-5 pb-5'>
+    <section className='pt-5 pb-5' data-aos="zoom-in-up">
             <Container style={{paddingBottom:"3rem"}}>
                 <Row className='g-0 cntbox'>
                     

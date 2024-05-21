@@ -153,25 +153,28 @@ function Page1() {
                 }
 
                 {/* Pagination code */}
-                <div className="col-12 d-flex justify-content-center">
-                  <ul className='pagination'>
-                    <li className='page-item'>
-                      <Link to='/productpage' className='page-link' onClick={prePage}>Prev</Link>
-                    </li>
-                    {
-                      numbers.map((n, index) => {
-                        return (
-                          <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={index}>
-                            <Link to='/productpage' className='page-link' onClick={() => changeCPage(n)}>{n}</Link>
-                          </li>
-                        )
-                      })
-                    }
-                    <li className='page-item'>
-                      <Link to='/productpage' className='page-link' onClick={nextPage}>Next</Link>
-                    </li>
-                  </ul>
-                </div>
+                {
+                  (loading) ? '' :
+                    <div className="col-12 d-flex justify-content-center">
+                      <ul className='pagination'>
+                        <li className='page-item'>
+                          <Link to='/productpage' className='page-link' onClick={prePage}>Prev</Link>
+                        </li>
+                        {
+                          numbers.map((n, index) => {
+                            return (
+                              <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={index}>
+                                <Link to='/productpage' className='page-link' onClick={() => changeCPage(n)}>{n}</Link>
+                              </li>
+                            )
+                          })
+                        }
+                        <li className='page-item'>
+                          <Link to='/productpage' className='page-link' onClick={nextPage}>Next</Link>
+                        </li>
+                      </ul>
+                    </div>
+                }
               </Row>
 
             </Container>

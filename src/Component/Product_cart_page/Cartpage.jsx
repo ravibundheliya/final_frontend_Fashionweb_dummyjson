@@ -3,6 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { clearall, deletedata } from '../../store/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Cartpage() {
   const cartvalue = useSelector((state) => state.cart.value);
@@ -10,11 +12,15 @@ function Cartpage() {
   const deleteone = (item) => {
     if (window.confirm("Are you sure to remove product from cart ?")) {
       dispatch(deletedata(item))
+      let notify = () => toast("Selected product removed!");
+      notify();
     }
   }
   const confirmdelete = () => {
     if (window.confirm("Are you sure to clear cart ?")) {
       dispatch(clearall());
+      let notify = () => toast("Cart is cleared");
+      notify();
     }
   }
   return (
@@ -30,7 +36,9 @@ function Cartpage() {
         <Row>
           <Col className='px-3 p-md-0 '>
             <table width={"100%"}>
-              <thead className='carthead'>
+              {
+                (cartvalue.length !==0)?
+                <thead className='carthead'>
                 <tr className='text-uppercase'>
                   <th></th>
                   <th></th>
@@ -39,11 +47,12 @@ function Cartpage() {
                   <th className='text-center'>Quantity</th>
                   <th>Total</th>
                 </tr>
-              </thead>
+              </thead>:''
+              }
               <tbody>
                 {/* Mapping Cart Product */}
                 {
-                  cartvalue.map((item, index) => {
+                  (cartvalue.length !== 0) ? cartvalue.map((item, index) => {
                     return (
                       <tr className='cartborder text-center text-md-start' key={item.id}>
                         <td className='closeborder'><i className="bi bi-x" onClick={() => deleteone(item.id)}></i></td>
@@ -63,7 +72,10 @@ function Cartpage() {
                         <td className='p-price'>₹{item.price * item.stock}</td>
                       </tr>
                     )
-                  })
+                  }) :
+                    <tr>
+                      <td colSpan={6} align='center'><h1 className='emptytext'>Cart is Empty</h1></td>
+                    </tr>
                 }
               </tbody>
             </table>
@@ -71,6 +83,7 @@ function Cartpage() {
           </Col>
         </Row>
       </Container>
+      <ToastContainer />
     </div>
   )
 }

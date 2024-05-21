@@ -112,7 +112,7 @@ function Page1() {
                             </div>
                             <div className="card-body">
                               <Link className='card-text stretched-link text-dark fw-bolder' to={`/productpage/${item.id}`}>{item.title}</Link>
-                              <div className='d-flex justify-content-around mb-2' style={{ alignItems: "center" }}>
+                              <div className='d-flex justify-content-around' style={{ alignItems: "center" }}>
                                 <h6 className="card-title fw-bolder" style={{ fontSize: "20px" }}>₹{item.price} <del className='text-secondary fw-light' style={{ fontSize: "14px" }}>{Math.round((item.price * 100) / (100 - item.discountPercentage))}</del></h6>
                                 <span className="rating" style={{ color: "#C2572B" }}>★<span style={{ fontSize: "14px" }}> {item.rating}</span></span>
                               </div>

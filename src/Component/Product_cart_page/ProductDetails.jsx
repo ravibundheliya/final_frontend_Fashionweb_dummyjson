@@ -3,6 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { pushdata } from '../../store/cartSlice';
 
 function ProductDetails() {
     const params = useParams();
@@ -11,6 +13,8 @@ function ProductDetails() {
     const [cnt, setcnt] = useState(1);
     const [qty, setqty] = useState(1);
     const [disimage, setdisimage] = useState('');
+    const dispatch = useDispatch();
+    const cartvalue = useSelector((state) => state.cart.value)
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${params.id}`)
             .then(res => res.json())
@@ -28,6 +32,12 @@ function ProductDetails() {
         setqty((qty > 1) ? qty - 1 : 1)
     }
 
+    const addtocart = () => {
+        const updatevalue = { ...data, stock: qty }
+        dispatch(pushdata(updatevalue))
+        setqty(1);
+    }
+    console.log(cartvalue);
     const starPercentage = (data.rating / 5) * 100;
     const starPercentageRounded = `${Math.round(starPercentage)}%`;
 
@@ -70,7 +80,7 @@ function ProductDetails() {
                                     <button onClick={pluscart}><i className="bi bi-caret-up"></i></button>
                                     <button onClick={minusecart}><i className="bi bi-caret-down"></i></button>
                                 </div>
-                                <button type="button" className="btn px-5 ms-3 addtobtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" className="btn px-5 ms-3 addtobtn" onClick={addtocart} data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Add to cart
                                 </button>
                                 {/* Modal */}

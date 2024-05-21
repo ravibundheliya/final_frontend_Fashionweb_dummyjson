@@ -63,7 +63,7 @@ li {
 
 .prdimage img {
     height: 100%;
-    
+
     object-fit: cover;
 }
 
@@ -216,6 +216,35 @@ textarea {
     font-size: 18px;
 }
 
+.page-link {
+    color: black;
+}
+
+.page-link:hover {
+    color: white;
+    background-color: #cdcdcd;
+}
+
+.pagination {
+    padding-top: 1rem;
+}
+
+.pagination .page-link {
+    outline: none;
+}
+
+.pagination .page-link:focus,
+.pagination .page-link:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.active>.page-link,
+.page-link.active {
+    color: var(--bs-pagination-active-color);
+    background-color: black;
+    border-color: black;
+}
 
 @media(min-width: 576px) and (max-width: 768px) {
     .thumbimage {
@@ -235,5 +264,96 @@ textarea {
         height: 75px;
         width: 20%;
         cursor: pointer;
+    }
+}
+
+.rating {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.cartmenu {
+    align-items: center;
+}
+
+.cartimg img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.cartborder {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.carthead {
+    height: 50px;
+}
+
+.closeborder {
+    border-right: 1px solid lightgray;
+    padding: 10px;
+    text-align: center;
+}
+
+.closeborder i {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0px 2px;
+    color: white;
+    background-color: lightgray;
+    transition: .3s;
+}
+
+.closeborder i:hover {
+    background-color: black;
+}
+
+.plink {
+    color: #212529;
+}
+
+.plink:hover {
+    text-decoration: underline;
+}
+
+.psldimg div {
+    display: flex;
+    justify-content: center;
+    right: 0 !important;
+    align-items: center;
+}
+
+.psldimg div img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 760px) {
+    .cartborder {
+        border: 1px solid lightgray;
+        display: grid;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .carthead {
+        display: none;
+    }
+
+    .closeborder {
+        border-right: 0px;
+        text-align: right;
+        width: 100%;
+    }
+
+    .p-price {
+        font-weight: 500;
+    }
+
+    .imagebox {
+        height: 150px;
     }
 }

@@ -7,7 +7,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './style.css';
+import { useSelector } from 'react-redux';
 function Header() {
+  const cartvalue = useSelector((state)=>state.cart.value);
   return (
     <div>
       {['lg'].map((expand) => (
@@ -45,6 +47,9 @@ function Header() {
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link as={Link} to="/cart">Cart ({cartvalue.length})</Nav.Link>
                   </Nav.Item>
                 </Nav>
                 <Form className="d-flex">

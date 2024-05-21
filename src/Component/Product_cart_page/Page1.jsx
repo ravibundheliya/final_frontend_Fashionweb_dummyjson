@@ -9,6 +9,8 @@ function Page1() {
   const [storecat, setstorecat] = useState('');
   const [storesearch, setstoresearch] = useState('');
 
+
+
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then(res => res.json())
@@ -51,7 +53,30 @@ function Page1() {
           setdata(json.products);
         });
     }
-  },[storesearch])
+  }, [storesearch])
+  // Pagination Logic
+  const [currentPage, setcurrentPage] = useState(1);
+  const recordsPerPage = 9;
+  const lastIndex = currentPage * recordsPerPage;
+  const firstIndex = lastIndex - recordsPerPage;
+  const records = data.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(data.length / recordsPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
+
+  const prePage = () => {
+    if (currentPage !== 1) {
+      setcurrentPage(currentPage - 1)
+    }
+  }
+  const changeCPage = (num) => {
+    setcurrentPage(num)
+  }
+  const nextPage = () => {
+    if (currentPage !== npage) {
+      setcurrentPage(currentPage + 1)
+    }
+  }
+
   return (
     <>
       <Container className='py-5'>
@@ -59,24 +84,25 @@ function Page1() {
           <Col className='col-0 col-lg-3'>
             <input type="text" className='pagesearch py-2 px-3' placeholder='Search products...' onChange={(e) => setstoresearch(e.target.value)} />
             <div className='py-4'>
-              <h4 className='fw-bold' style={{fontSize:"18px"}}>Filter By Category</h4>
+              <h4 className='fw-bold' style={{ fontSize: "18px" }}>Filter By Category</h4>
               <ul className='catlist'>
-                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat)?{color:"black"}:{color:"#C2572B",fontWeight:"900"}}>All Categories</li>
+                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat) ? { color: "black" } : { color: "#C2572B", fontWeight: "900" }}>All Categories</li>
                 {
                   cat.map((item, index) => {
                     return (
-                      <li key={item} onClick={() => setstorecat(item)} className='incatlist' style={(storecat===item)?{color:"#C2572B",fontWeight:"900"}:{color:"black"}}>{item}</li>
+                      <li key={item} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : { color: "black" }}>{item}</li>
                     )
                   })
                 }
               </ul>
+              
             </div>
           </Col>
           <Col className='col-12 col-lg-9'>
             <Container>
               <Row className='g-3'>
                 {
-                  data.map((item, index) => {
+                  records.map((item, index) => {
                     return (
                       <Col key={item.id} className='col-12 col-sm-6 col-md-4'>
                         <div className='d-grid justify-content-center w-100'>
@@ -97,7 +123,29 @@ function Page1() {
                     )
                   })
                 }
+
+                {/* Pagination code */}
+                <div className="col-12 d-flex justify-content-center">
+                  <ul className='pagination'>
+                    <li className='page-item'>
+                      <Link to='/productpage' className='page-link' onClick={prePage}>Prev</Link>
+                    </li>
+                    {
+                      numbers.map((n, index) => {
+                        return (
+                          <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={index}>
+                            <Link to='/productpage' className='page-link' onClick={() => changeCPage(n)}>{n}</Link>
+                          </li>
+                        )
+                      })
+                    }
+                    <li className='page-item'>
+                      <Link to='/productpage' className='page-link' onClick={nextPage}>Next</Link>
+                    </li>
+                  </ul>
+                </div>
               </Row>
+
             </Container>
           </Col>
         </Row>

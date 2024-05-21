@@ -10,6 +10,7 @@ import Blog from './Component/OtherPages/Blog';
 import Contact from './Component/OtherPages/Contact';
 import Page1 from './Component/Product_cart_page/Page1';
 import ProductDetails from './Component/Product_cart_page/ProductDetails';
+import Cartpage from './Component/Product_cart_page/Cartpage';
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/productpage' element={<Page1 />} />
+        <Route path='/cart' element={<Cartpage/>} />
         <Route path='/productpage/:id' element={<ProductDetails />} />
       </Routes>
       <Footer />

@@ -13,7 +13,6 @@ import ProductDetails from './Component/Product_cart_page/ProductDetails';
 import Cartpage from './Component/Product_cart_page/Cartpage';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import 'animate.css';
 import { useEffect } from 'react';
 
 function App() {

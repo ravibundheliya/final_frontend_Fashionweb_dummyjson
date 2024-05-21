@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import "./style.css";
 import { Link } from 'react-router-dom';
+import Loader from "react-js-loader";
+
 
 function Page1() {
   const [data, setdata] = useState([]);
   const [cat, setcat] = useState([]);
   const [storecat, setstorecat] = useState('');
   const [storesearch, setstoresearch] = useState('');
-
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
+    setLoading(true);
+    setdata([]);
     fetch('https://dummyjson.com/products')
       .then(res => res.json())
       .then((json) => {
         setdata(json.products);
+        setLoading(false);
       });
     fetch('https://dummyjson.com/products/categories')
       .then(res => res.json())
@@ -24,26 +29,35 @@ function Page1() {
       });
   }, [])
   useEffect(() => {
+    setLoading(true);
+    setdata([]);
+
     if (storecat) {
       fetch(`https://dummyjson.com/products/category/${storecat}`)
         .then((res) => res.json())
         .then((json) => {
           setdata(json.products);
+          setLoading(false);
         });
     } else {
       fetch('https://dummyjson.com/products')
         .then((res) => res.json())
         .then((json) => {
           setdata(json.products);
+          setLoading(false);
         });
     }
   }, [storecat]);
   useEffect(() => {
+    setLoading(true);
+    setdata([]);
+
     if (storesearch) {
       fetch(`https://dummyjson.com/products/search?q=${storesearch}`)
         .then(res => res.json())
         .then((json => {
           setdata(json.products);
+          setLoading(false);
         }));
     }
     else {
@@ -51,6 +65,7 @@ function Page1() {
         .then((res) => res.json())
         .then((json) => {
           setdata(json.products);
+          setLoading(false);
         });
     }
   }, [storesearch])
@@ -79,6 +94,7 @@ function Page1() {
 
   return (
     <>
+
       <Container className='py-5'>
         <Row>
           <Col className='col-0 col-lg-3'>
@@ -94,13 +110,25 @@ function Page1() {
                     )
                   })
                 }
+
               </ul>
-              
+
             </div>
           </Col>
           <Col className='col-12 col-lg-9'>
             <Container>
               <Row className='g-3'>
+                {loading && (
+                  <div className={"content"}>
+                    <div className={"zoom-out"}>
+                      <div className={"row g-0"}>
+                        <div className={"item "}>
+                          <Loader type="bubble-scale" bgColor={"#000000"} color={"#FFFFFF"} title={"bubble-scale"} size={100} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {
                   records.map((item, index) => {
                     return (

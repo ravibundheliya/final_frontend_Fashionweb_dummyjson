@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Cartpage() {
   const cartvalue = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
+
   const deleteone = (item) => {
     if (window.confirm("Are you sure to remove product from cart ?")) {
       dispatch(deletedata(item))

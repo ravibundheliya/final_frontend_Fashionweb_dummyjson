@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pushdata } from '../../store/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from "react-js-loader";
 
 function ProductDetails() {
     const params = useParams();
@@ -16,13 +17,17 @@ function ProductDetails() {
     const [qty, setqty] = useState(1);
     const [disimage, setdisimage] = useState('');
     const dispatch = useDispatch();
-    const cartvalue = useSelector((state) => state.cart.value)
+    const cartvalue = useSelector((state) => state.cart.value);
+    const [loading, setLoading] = useState(true);;
+
     useEffect(() => {
+        setLoading(true);
         fetch(`https://dummyjson.com/products/${params.id}`)
             .then(res => res.json())
             .then((json) => {
                 setdata(json);
                 setdataimg(json.images);
+                setLoading(false)
             })
             .catch(error => console.error('Error fetching data:', error));
     }, [params.id]);
@@ -55,7 +60,19 @@ function ProductDetails() {
 
     return (
         <div>
-            <Container className="prdpadding pt-3">
+
+            {
+                (loading)?
+                <div className={"content"}>
+                    <div className={"zoom-out"}>
+                        <div className={"row g-0"}>
+                            <div className={"item "}>
+                                <Loader type="bubble-scale" bgColor={"#000000"} color={"#FFFFFF"} title={"bubble-scale"} size={100} />
+                            </div>
+                        </div>
+                    </div>
+                </div>:
+                <Container className="prdpadding pt-3">
                 <Row>
                     <Col className='col-12 col-lg-6 p-2'>
                         <div className='thumbimage'>
@@ -159,6 +176,9 @@ function ProductDetails() {
                     </Col>
                 </Row>
             </Container>
+            }
+
+            
             <ToastContainer />
         </div>
     )

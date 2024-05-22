@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Stickyheader() {
@@ -8,11 +8,12 @@ function Stickyheader() {
   return (
         <>
             <section className='d-flex justify-content-between d-lg-none stickyhdr'>
-                <Link to="/"><i class="bi bi-house-door"></i></Link>
-                <Link to="/productpage"><i class="bi bi-card-list"></i></Link>
-                <Link to="/cart"><i class="bi bi-basket"></i></Link>
-                <Link to="/wishlist"><i class="bi bi-heart"></i></Link>
-                <Link to="/contact"><i class="bi bi-gear"></i></Link>
+                
+                <NavLink to="/" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-house-door"></i></NavLink>
+                <NavLink to="/productpage" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-card-list"></i></NavLink>
+                <NavLink to="/cart" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-basket"></i><span className='cartvalue'>{cartvalue?"0":cartvalue}</span></NavLink>
+                <NavLink to="/wishlist" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-heart"></i><span className='cartvalue'>{cartvalue?"0":cartvalue}</span></NavLink>
+                <NavLink to="/contact" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-gear"></i></NavLink>
             </section>
         </>
     )

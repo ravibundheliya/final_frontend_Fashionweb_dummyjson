@@ -36,13 +36,14 @@
   font-size: 14px;
 }
 
-.fd a{
+.fd a {
   color: black;
   font-size: 14px;
   font-weight: 500;
   transition: .3s;
 }
-.fd:hover .newfd{
+
+.fd:hover .newfd {
   color: orangered;
 }
 
@@ -59,7 +60,37 @@
   font-weight: 900;
   letter-spacing: 1px;
 }
-.activenav{
+
+.activenav {
   color: orange !important;
   font-weight: 900 !important;
+}
+
+.stickyhdr {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  z-index: 1000;
+  border-top: 1px solid lightgrey;
+  box-shadow: 0 0 25px grey;
+}
+
+.stickyhdr a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+  color: black;
+}
+
+.stickyhdr a:hover {
+  color: white;
+  background-color: black;
+}
+.stickyhdr a i{
+  font-size: 20px;
 }

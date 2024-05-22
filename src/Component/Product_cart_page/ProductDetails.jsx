@@ -76,7 +76,7 @@ function ProductDetails() {
                             </div>
                         </div>
                     </div> :
-                    <Container className="prdpadding pt-3">
+                    <Container className="prdpadding pt-3" >
                         <Row>
                             <Col className='col-12 col-lg-6 p-2'>
                                 <div className='thumbimage'>

@@ -14,6 +14,8 @@ import Cartpage from './Component/Product_cart_page/Cartpage';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Stickyheader from './Component/Partitial/Stickyheader';
+
 
 function App() {
   
@@ -44,6 +46,7 @@ function App() {
         <Route path='/productpage/:id' element={<ProductDetails />} />
       </Routes>
       <Footer />
+      <Stickyheader/>
     </>
   );
 }

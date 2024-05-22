@@ -40,8 +40,8 @@ function Topproductsslide() {
                 </Row>
                 <hr data-aos="slide-left"/>
             </Container>
-            <Container className='pb-5' data-aos="zoom-in-left" data-aos-duration="1000">
-                <OwlCarousel className='owl-theme'{...obj}>
+            <Container className='pb-5' style={{overflow:"hidden"}}>
+                <OwlCarousel className='owl-theme'{...obj} data-aos="zoom-in-left" data-aos-duration="1000">
                     <div className='item text-center prdback'>
                         <Card style={{ width: '100%' }}>
                             <Card.Img variant="top" src={require('../../img/asset 7.jpeg')} width={"100%"} />

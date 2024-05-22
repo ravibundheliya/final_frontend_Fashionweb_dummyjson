@@ -81,10 +81,6 @@
     position: absolute;
 }
 
-.item {
-    padding: 3rem;
-}
-
 .item h4 {
     line-height: 25px;
     color: #787878;
@@ -94,20 +90,24 @@
 .owl-dots {
     position: absolute;
 }
-.clientdata{
+
+.clientdata {
     align-items: center;
     gap: 10px;
 }
-.clientdata img{
+
+.clientdata img {
     width: 50px !important;
     height: 50px !important;
     border-radius: 50%;
 }
-.newsltr{
+
+.newsltr {
     padding: 5px 10px;
     width: 50%;
     border-width: 0px;
 }
+
 @media(max-width: 990px) {
     .sldimage img {
         height: 100%;
@@ -145,7 +145,8 @@
     .sld-ttl {
         font-size: 30px;
     }
-    .newsltr{
+
+    .newsltr {
         padding: 2px 5px;
         width: 100%;
         border-width: 0px;

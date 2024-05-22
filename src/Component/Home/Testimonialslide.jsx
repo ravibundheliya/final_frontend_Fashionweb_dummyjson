@@ -25,21 +25,21 @@ function Testimonialslide() {
                                         <div className='text-light'>Travelling salesman and above it there hung a picture</div>
                                         <div className='mt-4 bg-light' data-aos="zoom-in-right">
                                             <OwlCarousel className='owl-theme' {...obj} >
-                                                <div className='item'>
+                                                <div className='item py-3 px-4'>
                                                     <h4>"Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and"</h4>
                                                     <div className='d-flex clientdata text-center justify-content-md-center pt-2'>
                                                         <img src={require('../../img/asset 32.jpeg')} alt="" />
                                                         <h4 className='text-dark text-uppercase f-900'> - John Smith</h4>
                                                     </div>
                                                 </div>
-                                                <div className='item'>
+                                                <div className='item py-3 px-4'>
                                                     <h4>"Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and"</h4>
                                                     <div className='d-flex clientdata text-center justify-content-md-center pt-2'>
                                                         <img src={require('../../img/asset 33.jpeg')} alt="" />
                                                         <h4 className='text-dark text-uppercase f-900'> - John Smith</h4>
                                                     </div>
                                                 </div>
-                                                <div className='item'>
+                                                <div className='item py-3 px-4'>
                                                     <h4>"Samsa was a travelling salesman and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and"</h4>
                                                     <div className='d-flex clientdata text-center justify-content-md-center pt-2'>
                                                         <img src={require('../../img/asset 36.jpeg')} alt="" />

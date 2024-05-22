@@ -3,9 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 import "./style.css";
 import { Link } from 'react-router-dom';
 import Loader from "react-js-loader";
+import axios from 'axios';
 
 
 function Page1() {
+
   const [data, setdata] = useState([]);
   const [cat, setcat] = useState([]);
   const [storecat, setstorecat] = useState('');
@@ -16,59 +18,85 @@ function Page1() {
   useEffect(() => {
     setLoading(true);
     setdata([]);
-    fetch('https://dummyjson.com/products')
-      .then(res => res.json())
-      .then((json) => {
-        setdata(json.products);
-        setLoading(false);
-      });
-    fetch('https://dummyjson.com/products/categories')
-      .then(res => res.json())
-      .then((json) => {
-        setcat(json)
-      });
+
+    axios.get('https://dummyjson.com/products')
+      .then(function (response) {
+        setdata(response.data.products);
+        setLoading(false)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+    axios.get('https://dummyjson.com/products/categories')
+      .then(function (response) {
+        setcat(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
   }, [])
+
+
   useEffect(() => {
     setLoading(true);
     setdata([]);
 
     if (storecat) {
-      fetch(`https://dummyjson.com/products/category/${storecat}`)
-        .then((res) => res.json())
-        .then((json) => {
-          setdata(json.products);
+
+      axios.get(`https://dummyjson.com/products/category/${storecat}`)
+        .then(function (response) {
+          setdata(response.data.products);
           setLoading(false);
-        });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     } else {
-      fetch('https://dummyjson.com/products')
-        .then((res) => res.json())
-        .then((json) => {
-          setdata(json.products);
+
+      axios.get(`https://dummyjson.com/products`)
+        .then(function (response) {
+          setdata(response.data.products);
           setLoading(false);
-        });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
+
   }, [storecat]);
+
+
   useEffect(() => {
     setLoading(true);
     setdata([]);
 
     if (storesearch) {
-      fetch(`https://dummyjson.com/products/search?q=${storesearch}`)
-        .then(res => res.json())
-        .then((json => {
-          setdata(json.products);
+
+      axios.get(`https://dummyjson.com/products/search?q=${storesearch}`)
+        .then(function (response) {
+          setdata(response.data.products);
           setLoading(false);
-        }));
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
     else {
-      fetch('https://dummyjson.com/products')
-        .then((res) => res.json())
-        .then((json) => {
-          setdata(json.products);
+
+      axios.get(`https://dummyjson.com/products`)
+        .then(function (response) {
+          setdata(response.data.products);
           setLoading(false);
-        });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
   }, [storesearch])
+
+
   // Pagination Logic
   const [currentPage, setcurrentPage] = useState(1);
   const recordsPerPage = 9;
@@ -133,8 +161,8 @@ function Page1() {
                   records.map((item, index) => {
                     return (
                       <Col key={item.id} className='col-12 col-sm-6 col-md-4'>
-                        <div className='d-grid justify-content-center w-100'>
-                          <div className="card w-100">
+                        <div className='outcartpart'>
+                          <div className="card newcard">
                             <div className='imagebox'>
                               <img src={item.thumbnail} className="card-img-top pimage" alt={"Image of " + item.title} />
                             </div>

@@ -191,10 +191,6 @@
     position: absolute;
 }
 
-.item {
-    padding: 3rem;
-}
-
 .item h4 {
     line-height: 25px;
     color: #787878;

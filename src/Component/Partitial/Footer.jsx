@@ -28,7 +28,7 @@ function Footer() {
                             </div>
                         </Col>
                         <Col className='col-6 col-lg-3 p-2'>
-                            <div className='p-2 f1 text-center'>
+                            <div className='p-2 f1 text-left'>
                                 <div className='ft'>COMPANY</div>
                                 <div className='fd pt-3'><Link to="/">About us</Link></div>
                                 <div className='fd'><Link to="/">Best services</Link></div>
@@ -38,7 +38,7 @@ function Footer() {
                             </div>
                         </Col>
                         <Col className='col-6 col-lg-3 p-2'>
-                            <div className='p-2 f1 text-left text-lg-center'>
+                            <div className='p-2 f1 text-left'>
                                 <div className='ft'>PAYMENT & SHIPPING</div>
                                 <div className='fd pt-3'><Link to="/">Payment method</Link></div>
                                 <div className='fd'><Link to="/">Tearms of use</Link></div>
@@ -48,7 +48,7 @@ function Footer() {
                             </div>
                         </Col>
                         <Col className='col-6 col-lg-2 p-2'>
-                            <div className='p-2 f1 text-center'>
+                            <div className='p-2 f1 text-left'>
                                 <div className='ft text-uppercase'>Social Media</div>
                                 <div className='fd  pt-3'><Link to="/" className="newfd"><i className="bi bi-instagram"></i> tryinstagram</Link></div>
                                 <div className='fd '><Link to="/" className="newfd"><i className="bi bi-facebook"></i> tryfacebook</Link></div>

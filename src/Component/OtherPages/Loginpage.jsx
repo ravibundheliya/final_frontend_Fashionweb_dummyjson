@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginuser } from '../../store/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Loginpage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const alluser = useSelector((state) => state.user.value);
-    const logUser = useSelector((state) => state.user.logindata);
     const [data, setdata] = useState({
         email: '',
         password: ''
     });
-    useEffect(() => {
-        console.log(logUser);
-    }, [logUser]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,8 +27,9 @@ function Loginpage() {
         if (check) {
             navigate('/');
         }
-        else{
-            alert("Enter valid Email and Password...")
+        else {
+            const notify1 = () => toast("Enter valid Email and Password...");
+            notify1();
         }
     }
     return (
@@ -56,6 +54,7 @@ function Loginpage() {
                     </Col>
                 </Row>
             </Container>
+            <ToastContainer />
         </div>
     )
 }

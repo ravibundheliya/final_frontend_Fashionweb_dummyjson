@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { pushdata } from '../../store/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from "react-js-loader";
 import axios from 'axios';
+import { userpushdata, userpushwish } from '../../store/userSlice';
 
 
 function ProductDetails() {
@@ -19,22 +19,25 @@ function ProductDetails() {
     const [qty, setqty] = useState(1);
     const [disimage, setdisimage] = useState('');
     const dispatch = useDispatch();
-    const cartvalue = useSelector((state) => state.cart.value);
-    const [loading, setLoading] = useState(true);;
+    const loguser = useSelector((state) => state.user.logindata);
+    const usercart = useSelector((state) => state.user.logindata?.cart);
+    const userwish = useSelector((state) => state.user.logindata?.wishlist);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
         setLoading(true);
-        
+
         axios.get(`https://dummyjson.com/products/${params.id}`)
             .then(function (response) {
                 setdata(response.data);
                 setdataimg(response.data.images);
                 setLoading(false);
             })
-            .catch(function(error){
+            .catch(function (error) {
                 console.log(error);
             })
-            
+
     }, [params.id]);
 
     const pluscart = () => {
@@ -45,20 +48,48 @@ function ProductDetails() {
     }
 
     const addtocart = () => {
-        const updatevalue = { ...data, stock: qty }
-        const check = cartvalue.find(item => item.id === data.id)
-        dispatch(pushdata(updatevalue))
-        setqty(1);
-        if (check) {
-            const notify1 = () => toast("Product quantity updated!");
-            notify1();
+        if (loguser) {
+            const updatevalue = { ...data, stock: qty }
+            const check = usercart.find(item => item.id === data.id)
+            dispatch(userpushdata(updatevalue))
+            setqty(1);
+            if (check) {
+                const notify1 = () => toast("Product quantity updated!");
+                notify1();
+            }
+            else {
+                const notify2 = () => toast("Product added to cart");
+                notify2();
+            }
         }
         else {
-            const notify2 = () => toast("Product added to cart");
-            notify2();
+            const notify = () => toast("Log in first!");
+            notify();
         }
 
     }
+
+    const addtowish = () => {
+        if (loguser) {
+            const updatevalue = { ...data, stock: qty }
+            const check = userwish.find(item => item.id === data.id)
+            dispatch(userpushwish(updatevalue))
+            setqty(1);
+            if (check) {
+                const notify1 = () => toast("Product quantity updated!");
+                notify1();
+            }
+            else {
+                const notify2 = () => toast("Product added to Wishlist");
+                notify2();
+            }
+        }
+        else {
+            const notify = () => toast("Log in first!");
+            notify();
+        }
+    }
+
     const starPercentage = (data.rating / 5) * 100;
     const starPercentageRounded = `${Math.round(starPercentage)}%`;
 
@@ -129,7 +160,7 @@ function ProductDetails() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='py-2 d-flex heart'>
+                                <div className='py-2 d-flex heart' onClick={addtowish}>
                                     <div><i className="bi bi-heart"></i> <span>Add to wishlist</span></div>
                                 </div>
                                 <div className='p-2' style={{ cursor: "default", gap: "2px", display: "grid" }}>

@@ -269,7 +269,6 @@ textarea {
 .emptytext{
     padding: 132px 0px 100px 0px;
 }
-
 @media(min-width: 576px) and (max-width: 768px) {
     .thumbimage {
         height: 300px;
@@ -353,6 +352,10 @@ textarea {
     object-fit: cover;
 }
 
+
+.trash:hover{
+    background-color: #C2572B !important;
+}
 @media (max-width: 760px) {
     .cartborder {
         border: 1px solid lightgray;

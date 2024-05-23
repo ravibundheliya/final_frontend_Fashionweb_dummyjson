@@ -18,9 +18,11 @@ export const cartSlice = createSlice({
         state.value.push(action.payload)
       }
     },
+
     deletedata: (state,action)=>{
         state.value = state.value.filter((item) => item.id !== action.payload)
     },
+    
     clearall:(state)=>{
       state.value = []
     }

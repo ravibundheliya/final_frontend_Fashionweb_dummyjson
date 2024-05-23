@@ -3,13 +3,16 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import { adduser } from '../../store/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Signinpage() {
     const [formData, setformData] = useState({
         name: '',
         mobile: '',
         email: '',
-        password: ''
+        password: '',
+        cart: [],
+        wishlist: []
     });
 
     const [passwordValidation, setPasswordValidation] = useState({
@@ -72,19 +75,24 @@ function Signinpage() {
     const dispatchdata = () => {
         if (formData.name && formData.email && formData.mobile && formData.password) {
             if (!validEmail(formData.email)) {
-                alert("Enter valid Email !")
+                const notify = () => toast("Enter valid Email !");
+                notify();
             }
             else if (!validMobile(formData.mobile)) {
-                alert("Enter valid Mobile !")
+                const notify = () => toast("Enter valid Mobile !");
+                notify();
             }
             else if (!validPassword(formData.password)) {
-                alert("Enter valid Password !")
+                const notify = () => toast("Enter valid Password !");
+                notify();
             }
             else if (emailEntery(formData.email)) {
-                alert("Entered Email is already added !")
+                const notify = () => toast("Entered Email is already added !");
+                notify();
             }
             else if (mobileEntery(formData.mobile)) {
-                alert("Entered Mobile is already added !")
+                const notify = () => toast("Entered Mobile is already added !");
+                notify();
             }
             else {
                 dispatch(adduser(formData))
@@ -97,7 +105,8 @@ function Signinpage() {
                 navigate("/login");
             }
         } else {
-            alert("Enter All details !!");
+            const notify = () => toast("Enter All details !");
+            notify();
         }
     };
 
@@ -151,6 +160,7 @@ function Signinpage() {
                     </Col>
                 </Row>
             </Container>
+            <ToastContainer />
         </div>
     );
 }

@@ -17,10 +17,10 @@ import { useEffect } from 'react';
 import Stickyheader from './Component/Partitial/Stickyheader';
 import Loginpage from './Component/OtherPages/Loginpage';
 import Signinpage from './Component/OtherPages/Signinpage';
+import Wishlist from './Component/Product_cart_page/Wishlist';
 
 
 function App() {
-  
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -48,6 +48,7 @@ function App() {
         <Route path='/productpage/:id' element={<ProductDetails />} />
         <Route path='/login' element={<Loginpage/>} />
         <Route path='/signin' element={<Signinpage/>} />
+        <Route path='/wishlist' element={<Wishlist/>} />
       </Routes>
       <Footer />
       <Stickyheader/>

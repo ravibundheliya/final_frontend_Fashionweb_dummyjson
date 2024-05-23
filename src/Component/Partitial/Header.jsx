@@ -9,7 +9,7 @@ import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutuser } from '../../store/userSlice';
 function Header() {
-  const cartvalue = useSelector((state) => state.cart.value);
+  const cartvalue = useSelector((state) => state.user.logindata?.cart);
   const loginuser = useSelector((state) => state.user.logindata);
   const dispatch = useDispatch();
   return (
@@ -63,7 +63,7 @@ function Header() {
                     <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/wishlist"><i className="bi bi-heart"></i> </NavLink>
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>
-                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{cartvalue.length}</span></i> </NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{(cartvalue?.length)?cartvalue?.length:0}</span></i> </NavLink>
                   </Nav.Item>
                 </Nav>
               </Offcanvas.Body>

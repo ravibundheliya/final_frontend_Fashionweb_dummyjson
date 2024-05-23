@@ -245,19 +245,22 @@
     color: #787878;
 }
 
-.loginbox{
+.loginbox {
     background-color: white;
     box-shadow: 0 0 10px lightgray;
 }
-.boxtext span{
+
+.boxtext span {
     font-size: 14px;
     font-weight: 500;
 }
-.boxtext input{
+
+.boxtext input {
     padding: 0.6rem;
-    border: 1px solid lightgray ;
+    border: 1px solid lightgray;
 }
-.loginbtn{
+
+.loginbtn {
     background-color: #393939;
     border: 1px solid #393939;
     color: white;
@@ -267,7 +270,8 @@
     transition: .3s;
     font-size: 14px;
 }
-.loginbtn:hover{
+
+.loginbtn:hover {
     background-color: black;
 }
 
@@ -276,14 +280,15 @@
     font-size: 20px;
 }
 
-.changepage{
+.changepage {
     font-size: 12px;
     border: 1px solid #393939;
     background-color: white;
     color: #393939;
     transition: .3s;
 }
-.changepage:hover{
+
+.changepage:hover {
     color: white;
     background-color: #393939;
 }

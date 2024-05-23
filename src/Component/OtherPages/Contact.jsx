@@ -7,7 +7,7 @@ function Contact() {
         <div>
             <Container className='cntw' style={{ padding: "3rem 0rem" }}>
                 <Row><Col className='text-center pt-3 pb-3 bg-body-tertiary'><h1 style={{ fontWeight: "900", margin: "0" }}>Contact</h1></Col></Row>
-                <Row className='g-5 pt-5'>
+                <Row className='pt-5'>
                     <Col className='col-12 col-lg-6'>
                         <div className='allcnt'>
                             <div className='cntdtl d-flex'>

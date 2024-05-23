@@ -245,10 +245,47 @@
     color: #787878;
 }
 
+.loginbox{
+    background-color: white;
+    box-shadow: 0 0 10px lightgray;
+}
+.boxtext span{
+    font-size: 14px;
+    font-weight: 500;
+}
+.boxtext input{
+    padding: 0.6rem;
+    border: 1px solid lightgray ;
+}
+.loginbtn{
+    background-color: #393939;
+    border: 1px solid #393939;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: .3s;
+    font-size: 14px;
+}
+.loginbtn:hover{
+    background-color: black;
+}
 
 
 .cntformttl {
     font-size: 20px;
+}
+
+.changepage{
+    font-size: 12px;
+    border: 1px solid #393939;
+    background-color: white;
+    color: #393939;
+    transition: .3s;
+}
+.changepage:hover{
+    color: white;
+    background-color: #393939;
 }
 
 @media (max-width: 1200px) {

@@ -11,8 +11,8 @@ function Stickyheader() {
                 
                 <NavLink to="/" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-house-door"></i></NavLink>
                 <NavLink to="/productpage" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-card-list"></i></NavLink>
-                <NavLink to="/cart" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-basket"></i><span className='cartvalue'>{cartvalue?"0":cartvalue}</span></NavLink>
-                <NavLink to="/wishlist" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-heart"></i><span className='cartvalue'>{cartvalue?"0":cartvalue}</span></NavLink>
+                <NavLink to="/cart" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-basket"></i><span className='cartvalue'>{cartvalue.length}</span></NavLink>
+                <NavLink to="/wishlist" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-heart"></i></NavLink>
                 <NavLink to="/contact" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-gear"></i></NavLink>
             </section>
         </>

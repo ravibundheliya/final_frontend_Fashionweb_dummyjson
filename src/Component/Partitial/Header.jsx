@@ -1,19 +1,21 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './style.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutuser } from '../../store/userSlice';
 function Header() {
-  const cartvalue = useSelector((state)=>state.cart.value);
+  const cartvalue = useSelector((state) => state.cart.value);
+  const loginuser = useSelector((state) => state.user.logindata);
+  const dispatch = useDispatch();
   return (
     <div>
       {['lg'].map((expand) => (
-        <Navbar key={expand} expand={expand} sticky="top" className="footerclr bg-body-tertiary pt-4 pb-4">
+        <Navbar key={expand} expand={expand} sticky="top" className="footerclr bg-body-tertiary py-2 py-lg-4">
           <Container>
             <Navbar.Brand className='logo'>
               <Link to="/">
@@ -32,29 +34,38 @@ function Header() {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="phl justify-content-center flex-grow-1 pe-3" style={{alignItems:"center"}}>
+                <Nav className="phl justify-content-center flex-grow-1 pe-3" style={{ alignItems: "center" }}>
                   <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/">Home</NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav" : "" }} as={Link} to="/">Home</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/productpage">Products</NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav" : "" }} as={Link} to="/productpage">Products</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/blog">Blog</NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav" : "" }} as={Link} to="/blog">Blog</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/about">About</NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav" : "" }} as={Link} to="/about">About</NavLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/contact">Contact</NavLink>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <NavLink className={(e)=>{return e.isActive ? "activenav" : ""}} as={Link} to="/cart">Cart ({cartvalue.length})</NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav" : "" }} as={Link} to="/contact">Contact</NavLink>
                   </Nav.Item>
                 </Nav>
-                <Form className="d-flex">
-                  <Button variant="outline-dark">Login/Signin</Button>
-                </Form>
+                <Nav className="d-none d-lg-flex" style={{ alignItems: "center", gap: "10px" }}>
+                  <Nav.Item className='d-flex justify-content-center'>
+
+                    {(loginuser === null)
+                      ? <NavLink to="/login"><Button variant="outline-dark">Login/Signin</Button></NavLink>
+                      : <NavLink onClick={() => dispatch(logoutuser())}><Button variant="outline-dark">Logout</Button></NavLink>
+                    }
+                  </Nav.Item>
+                  <Nav.Item className='d-flex justify-content-center'>
+                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/wishlist"><i className="bi bi-heart"></i> </NavLink>
+                  </Nav.Item>
+                  <Nav.Item className='d-flex justify-content-center'>
+                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{cartvalue.length}</span></i> </NavLink>
+                  </Nav.Item>
+                </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>

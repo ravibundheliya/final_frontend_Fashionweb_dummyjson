@@ -15,6 +15,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Stickyheader from './Component/Partitial/Stickyheader';
+import Loginpage from './Component/OtherPages/Loginpage';
+import Signinpage from './Component/OtherPages/Signinpage';
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
         <Route path='/productpage' element={<Page1 />} />
         <Route path='/cart' element={<Cartpage />} />
         <Route path='/productpage/:id' element={<ProductDetails />} />
+        <Route path='/login' element={<Loginpage/>} />
+        <Route path='/signin' element={<Signinpage/>} />
       </Routes>
       <Footer />
       <Stickyheader/>

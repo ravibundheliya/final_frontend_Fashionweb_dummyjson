@@ -108,4 +108,7 @@
         width: 75%;
         padding: 0.33rem;
     }
+    .newbtncss{
+        font-size: 8px;
+    }
 }

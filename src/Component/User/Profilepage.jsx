@@ -46,7 +46,7 @@ function Profilepage() {
                         {
                           user.address.map((item, index) => {
                             return (
-                              <div className='newdataitem' style={{ color: "black" }}>{item.label}</div>
+                              <div className='newdataitem' key={item.label} style={{ color: "black" }}>{item.label}</div>
                             )
                           })
                         }
@@ -57,8 +57,8 @@ function Profilepage() {
               </div>
 
               <div className='pt-4 pt-md-5 d-flex justify-content-between justify-content-md-around'>
-                <Link to="/address" className='stylebtn fw-bold text-uppercase p-2 px-md-3 py-md-2'>Add New Address</Link>
-                <Link to="/resetpass" className='stylebtn fw-bold text-uppercase p-2 px-md-3 py-md-2'>Reset Password</Link>
+                <Link to="/address" className='stylebtn newbtncss fw-bold text-uppercase p-2 px-md-3 py-md-2'>Add New Address</Link>
+                <Link to="/resetpass" className='stylebtn newbtncss fw-bold text-uppercase p-2 px-md-3 py-md-2'>Reset Password</Link>
               </div>
             </div>
           </Col>

@@ -54,31 +54,11 @@ function Signinpage() {
             });
         }
     };
-
-    const validEmail = (email) => {
-        const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailpattern.test(email);
-    }
-
-    const validMobile = (mobile) => {
-        const mobilepattern = /^[0-9]{10}$/;
-        return mobilepattern.test(mobile);
-    }
-
-    const validPassword = (password) => {
-        const passwordpattern = /^[a-zA-Z0-9!@#%^&*_=+-]{8,12}$/;
-        return passwordpattern.test(password);
-    }
-
-    const emailEntery = (email) => {
-        const emailcheck = userFromRedux.some(item => item.email === email);
-        return emailcheck;
-    }
-
-    const mobileEntery = (mobile) => {
-        const mobilecheck = userFromRedux.some(item => item.mobile === mobile);
-        return mobilecheck;
-    }
+    const validEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validMobile = (mobile) => /^[0-9]{10}$/.test(mobile);
+    const validPassword = (password) => /^[a-zA-Z0-9!@#%^&*_=+-]{8,12}$/.test(password);
+    const emailEntery = (email) => userFromRedux.some(item => item.email === email);
+    const mobileEntery = (mobile) => userFromRedux.some(item => item.mobile === mobile);
 
     const dispatchdata = () => {
         if (formData.name && formData.email && formData.mobile && formData.password) {

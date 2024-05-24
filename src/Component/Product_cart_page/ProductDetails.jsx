@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from "react-js-loader";
 import axios from 'axios';
-import { userpushdata, userpushwish } from '../../store/userSlice';
+import { userdeletewish, userpushdata, userpushwish } from '../../store/userSlice';
 
 
 function ProductDetails() {
@@ -38,7 +38,12 @@ function ProductDetails() {
                 console.log(error);
             })
 
-    }, [params.id]);
+        const check = loguser?.cart.find((item) => item.id === data.id)
+        if (check) {
+            setqty(check?.stock)
+        }
+
+    }, [params.id, loguser.cart, data.id]);
 
     const pluscart = () => {
         setqty(qty + 1)
@@ -51,6 +56,7 @@ function ProductDetails() {
         if (loguser) {
             const updatevalue = { ...data, stock: qty }
             const check = usercart.find(item => item.id === data.id)
+            const checkWish = userwish.find(item => item.id === data.id)
             dispatch(userpushdata(updatevalue))
             setqty(1);
             if (check) {
@@ -59,6 +65,11 @@ function ProductDetails() {
             }
             else {
                 const notify2 = () => toast("Product added to cart");
+                notify2();
+            }
+            if(checkWish){
+                dispatch(userdeletewish(data.id))
+                const notify2 = () => toast("Product moved from wishlist to cart");
                 notify2();
             }
         }
@@ -72,16 +83,21 @@ function ProductDetails() {
     const addtowish = () => {
         if (loguser) {
             const updatevalue = { ...data, stock: qty }
-            const check = userwish.find(item => item.id === data.id)
-            dispatch(userpushwish(updatevalue))
+            const check = usercart.find(item => item.id === data.id)
+            const checkWish = userwish.find(item => item.id === data.id)
             setqty(1);
             if (check) {
-                const notify1 = () => toast("Product quantity updated!");
+                const notify1 = () => toast("Product already in cart!");
                 notify1();
             }
-            else {
+            if (!checkWish) {
+                dispatch(userpushwish(updatevalue))
                 const notify2 = () => toast("Product added to Wishlist");
                 notify2();
+            }
+            else {
+                const notify1 = () => toast("Product already in Wishlist!");
+                notify1();
             }
         }
         else {
@@ -139,7 +155,7 @@ function ProductDetails() {
                                 <div className='py-2' style={{ color: "grey" }}>{data.description}</div>
                                 <div className='py-4'>
                                     <div className='d-flex'>
-                                        <div><input type="text" className='qtyvalue' name="" id="" value={(qty > 0) ? qty : 1} readOnly /></div>
+                                        <div><input type="text" className='qtyvalue' value={qty} /></div>
                                         <div className='d-grid qtybtn'>
                                             <button onClick={pluscart}><i className="bi bi-caret-up"></i></button>
                                             <button onClick={minusecart}><i className="bi bi-caret-down"></i></button>

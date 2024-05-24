@@ -9,6 +9,7 @@ import './style.css';
 import { useSelector } from 'react-redux';
 function Header() {
   const cartvalue = useSelector((state) => state.user.logindata?.cart);
+  const wishvalue = useSelector((state) => state.user.logindata?.wishlist);
   const loginuser = useSelector((state) => state.user.logindata);
   return (
     <div>
@@ -58,7 +59,7 @@ function Header() {
                     }
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>
-                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/wishlist"><i className="bi bi-heart"></i> </NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/wishlist"><i className="bi bi-heart"><span className='cartval'>{(wishvalue?.length) ? wishvalue?.length : 0}</span></i> </NavLink>
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>
                     <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{(cartvalue?.length) ? cartvalue?.length : 0}</span></i> </NavLink>

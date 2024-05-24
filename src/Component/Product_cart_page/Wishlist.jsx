@@ -1,14 +1,15 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { userclearwish, userdeletewish, } from '../../store/userSlice';
+import { userclearwish, userdeletewish, userpushdata, } from '../../store/userSlice';
 
 function Wishlist() {
     const cartvalue = useSelector((state) => state.user.logindata?.wishlist);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const deleteone = (item) => {
         if (window.confirm("Are you sure to remove product from Wishlist ?")) {
@@ -24,12 +25,19 @@ function Wishlist() {
             notify();
         }
     }
+    const dispatchdata = (item) => {
+        dispatch(userpushdata(item))
+        const notify2 = () => toast("Product added to cart");
+        notify2();
+        dispatch(userdeletewish(item.id))
+        navigate('/cart')
+    }
     return (
         <div>
             {
                 (cartvalue?.length > 0) ?
                     <div className='text-center px-5 pt-5'>
-                        <button className='px-5 py-3 addtobtn newaddtobtn' onClick={confirmdelete}>Clear Cart</button>
+                        <button className='px-5 py-3 addtobtn newaddtobtn' onClick={confirmdelete}>Clear List</button>
                     </div>
                     : ""
             }
@@ -45,8 +53,7 @@ function Wishlist() {
                                             <th></th>
                                             <th>Product</th>
                                             <th>Price</th>
-                                            <th className='text-center'>Quantity</th>
-                                            <th>Total</th>
+                                            <th>Add to Cart</th>
                                         </tr>
                                     </thead> : ''
                             }
@@ -61,12 +68,9 @@ function Wishlist() {
                                                     <td className='cartimg p-3'><img src={item.thumbnail} alt="" /></td>
                                                     <td><Link to={`/productpage/${item.id}`} className='plink'>{item.title}</Link></td>
                                                     <td className='p-price'>₹{item.price}</td>
-                                                    <td>
-                                                        <div className='d-flex justify-content-center'>
-                                                            <div><input type="text" className='qtyvalue newqtyvalue' name="" id="" value={item.stock} readOnly /></div>
-                                                        </div>
+                                                    <td className='p-price' >
+                                                        <button className='btn px-4 py-3 addtobtn' onClick={() => dispatchdata(item)}>Add to cart</button>
                                                     </td>
-                                                    <td className='p-price'>₹{item.price * item.stock}</td>
                                                 </tr>
                                             )
                                         })

@@ -13,7 +13,7 @@ function Stickyheader() {
                 <NavLink to="/productpage" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-card-list"></i></NavLink>
                 <NavLink to="/cart" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-basket"></i><span className='cartvalue'>{(cartvalue?.length)?cartvalue?.length:0}</span></NavLink>
                 <NavLink to="/wishlist" className={(e)=>{return e.isActive ? "hrvheader poscart" : "poscart"}}><i className="bi bi-heart"></i></NavLink>
-                <NavLink to="/contact" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-gear"></i></NavLink>
+                <NavLink to="/profile" className={(e)=>{return e.isActive ? "hrvheader" : ""}}><i className="bi bi-person"></i></NavLink>
             </section>
         </>
     )

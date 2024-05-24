@@ -18,6 +18,9 @@ import Stickyheader from './Component/Partitial/Stickyheader';
 import Loginpage from './Component/OtherPages/Loginpage';
 import Signinpage from './Component/OtherPages/Signinpage';
 import Wishlist from './Component/Product_cart_page/Wishlist';
+import Profilepage from './Component/User/Profilepage';
+import Profileaddress from './Component/User/Profileaddress';
+import Resetpass from './Component/User/Resetpass';
 
 
 function App() {
@@ -49,6 +52,10 @@ function App() {
         <Route path='/login' element={<Loginpage/>} />
         <Route path='/signin' element={<Signinpage/>} />
         <Route path='/wishlist' element={<Wishlist/>} />
+        <Route path='/profile' element={<Profilepage/>} />
+        <Route path='/address' element={<Profileaddress/>} />
+        <Route path='/resetpass' element={<Resetpass/>} />
+        
       </Routes>
       <Footer />
       <Stickyheader/>

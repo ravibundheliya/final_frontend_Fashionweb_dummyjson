@@ -32,6 +32,16 @@ export const userSlice = createSlice({
             localStorage.setItem('loguser', JSON.stringify(state.logindata));
         },
 
+        resetpassword: (state,action) => {
+            state.logindata.password = action.payload;
+            const storeIndex = state.value.findIndex((item)=> item.email === state.logindata.email)
+            if(storeIndex !== -1){
+                state.value[storeIndex].password =  state.logindata.password;
+                localStorage.setItem('userdata',JSON.stringify(state.value));
+            }
+            localStorage.setItem('loguser', JSON.stringify(state.logindata));
+        },
+
         userpushdata: (state, action) => {
             const check = state.logindata.cart.find(item => item.id === action.payload.id);
             if (check) {
@@ -105,6 +115,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { adduser, loginuser, logoutuser, userpushdata, userdeletedata, userclearall, userpushwish, userdeletewish, userclearwish } = userSlice.actions;
+export const { adduser, loginuser, logoutuser, userpushdata, userdeletedata, userclearall, userpushwish, userdeletewish, userclearwish, resetpassword } = userSlice.actions;
 
 export default userSlice.reducer;

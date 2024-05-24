@@ -6,12 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './style.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutuser } from '../../store/userSlice';
+import { useSelector } from 'react-redux';
 function Header() {
   const cartvalue = useSelector((state) => state.user.logindata?.cart);
   const loginuser = useSelector((state) => state.user.logindata);
-  const dispatch = useDispatch();
   return (
     <div>
       {['lg'].map((expand) => (
@@ -56,14 +54,14 @@ function Header() {
 
                     {(loginuser === null)
                       ? <NavLink to="/login"><Button variant="outline-dark">Login/Signin</Button></NavLink>
-                      : <NavLink onClick={() => dispatch(logoutuser())}><Button variant="outline-dark">Logout</Button></NavLink>
+                      : <div className='d-flex'style={{alignItems:"center"}}><span style={{fontSize:"14px"}}>Welcome <span className='fw-bolder'>{loginuser.name}</span> !</span><NavLink className={(e) => { return e.isActive ? "activenav extcss p-1" : "extcss p-1" }} as={Link} to="/profile"><i className="bi bi-person" style={{fontSize:"25px"}}></i> </NavLink></div>
                     }
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>
                     <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/wishlist"><i className="bi bi-heart"></i> </NavLink>
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>
-                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{(cartvalue?.length)?cartvalue?.length:0}</span></i> </NavLink>
+                    <NavLink className={(e) => { return e.isActive ? "activenav extcss" : "extcss" }} as={Link} to="/cart"><i className="bi bi-basket"><span className='cartval'>{(cartvalue?.length) ? cartvalue?.length : 0}</span></i> </NavLink>
                   </Nav.Item>
                 </Nav>
               </Offcanvas.Body>

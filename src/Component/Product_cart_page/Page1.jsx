@@ -28,7 +28,7 @@ function Page1() {
         console.log(error);
       })
 
-    axios.get('https://dummyjson.com/products/categories')
+    axios.get('https://dummyjson.com/products/category-list')
       .then(function (response) {
         setcat(response.data);
       })
@@ -134,7 +134,7 @@ function Page1() {
                 {
                   cat.map((item, index) => {
                     return (
-                      <li key={item} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : { color: "black" }}>{item}</li>
+                      <li key={index} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : { color: "black" }}>{item}</li>
                     )
                   })
                 }

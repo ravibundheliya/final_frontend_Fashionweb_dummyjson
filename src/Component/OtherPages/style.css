@@ -254,6 +254,11 @@
     font-size: 14px;
     font-weight: 500;
 }
+.boxtext label {
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+}
 
 .boxtext input {
     padding: 0.6rem;

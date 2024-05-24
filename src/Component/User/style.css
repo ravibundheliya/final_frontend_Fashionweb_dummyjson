@@ -1,0 +1,97 @@
+.profilehdr_main {
+    display: grid;
+    border: 1px solid lightgray;
+    gap: 30px;
+}
+
+.profilehdr {
+    cursor: pointer;
+    color: black;
+}
+
+.profilehdr i {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.profilehdr span {
+    padding-left: 10px;
+    font-weight: 900;
+    color: rgb(63, 63, 63);
+}
+
+.profilehdr:hover .backhover {
+    border-color: black;
+    background-color: black;
+    color: white;
+}
+
+.profilehdr_sub {
+    display: grid;
+}
+
+.datalist_main {
+    gap: 10px;
+}
+
+.datalist_sub {
+    gap: 10px;
+    align-items: center;
+}
+
+.dataname {
+    width: 15%;
+}
+
+.dataitem {
+    width: 85%;
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+}
+
+.stylebtn{
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+.stylebtn:hover{
+    background-color: white;
+    color: black;
+}
+.newcss i {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+@media (min-width: 578px) and (max-width: 990px) {
+    .dataname {
+        width: 25%;
+    }
+
+    .dataitem {
+        width: 75%;
+    }
+}
+@media (max-width: 768px){
+    .stylebtn{
+        font-size: 12px;
+    }
+}
+@media (max-width: 578px){
+    .dataname {
+        font-size: 12px;
+        width: 25%;
+    }
+
+    .dataitem {
+        font-size: 12px;
+        width: 75%;
+        padding: 0.33rem;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
@@ -12,7 +12,8 @@ function Signinpage() {
         email: '',
         password: '',
         cart: [],
-        wishlist: []
+        wishlist: [],
+        address: []
     });
 
     const [passwordValidation, setPasswordValidation] = useState({
@@ -23,9 +24,15 @@ function Signinpage() {
         isValidLength: false
     });
 
+    const name = useRef();
+    const mobile = useRef();
+    const email = useRef();
+    const password = useRef();
+    const message = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userFromRedux = useSelector((state) => state.user.value);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -62,6 +69,7 @@ function Signinpage() {
         const passwordpattern = /^[a-zA-Z0-9!@#%^&*_=+-]{8,12}$/;
         return passwordpattern.test(password);
     }
+
     const emailEntery = (email) => {
         const emailcheck = userFromRedux.some(item => item.email === email);
         return emailcheck;
@@ -75,22 +83,32 @@ function Signinpage() {
     const dispatchdata = () => {
         if (formData.name && formData.email && formData.mobile && formData.password) {
             if (!validEmail(formData.email)) {
+                email.current.style.borderColor = "red";
+                email.current.style.borderWidth = "2px";
                 const notify = () => toast("Enter valid Email !");
                 notify();
             }
             else if (!validMobile(formData.mobile)) {
+                mobile.current.style.borderColor = "red";
+                mobile.current.style.borderWidth = "2px";
                 const notify = () => toast("Enter valid Mobile !");
                 notify();
             }
             else if (!validPassword(formData.password)) {
+                password.current.style.borderColor = "red";
+                password.current.style.borderWidth = "2px";
                 const notify = () => toast("Enter valid Password !");
                 notify();
             }
             else if (emailEntery(formData.email)) {
+                email.current.style.borderColor = "red";
+                email.current.style.borderWidth = "2px";
                 const notify = () => toast("Entered Email is already added !");
                 notify();
             }
             else if (mobileEntery(formData.mobile)) {
+                mobile.current.style.borderColor = "red";
+                mobile.current.style.borderWidth = "2px";
                 const notify = () => toast("Entered Mobile is already added !");
                 notify();
             }
@@ -105,6 +123,15 @@ function Signinpage() {
                 navigate("/login");
             }
         } else {
+            name.current.style.borderColor = "red";
+            name.current.style.borderWidth = "2px";
+            mobile.current.style.borderColor = "red";
+            mobile.current.style.borderWidth = "2px";
+            email.current.style.borderColor = "red";
+            email.current.style.borderWidth = "2px";
+            password.current.style.borderColor = "red";
+            password.current.style.borderWidth = "2px";
+            message.current.innerText = "*Enter All details !";
             const notify = () => toast("Enter All details !");
             notify();
         }
@@ -123,6 +150,7 @@ function Signinpage() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                ref={name}
                             />
                             <span className='pt-3'>Mobile <span className='text-danger fw-bolder'> *</span></span>
                             <input
@@ -130,6 +158,7 @@ function Signinpage() {
                                 name="mobile"
                                 value={formData.mobile}
                                 onChange={handleChange}
+                                ref={mobile}
                             />
                             <span className='pt-3'>Email Address <span className='text-danger fw-bolder'> *</span></span>
                             <input
@@ -137,6 +166,7 @@ function Signinpage() {
                                 name="email"
                                 value={formData.email}
                                 onChange={(e) => handleChange(e)}
+                                ref={email}
                             />
                             <span className='pt-3'>Create Password <span className='text-danger fw-bolder'> *</span></span>
                             <input
@@ -144,6 +174,7 @@ function Signinpage() {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
+                                ref={password}
                             />
                             <ul className='d-grid d-lg-flex justify-content-between pt-2 fw-bolder'>
                                 <li className={passwordValidation.hasUppercase ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasUppercase ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Uppercase</li>
@@ -152,6 +183,7 @@ function Signinpage() {
                                 <li className={passwordValidation.hasSymbol ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasSymbol ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Symbol</li>
                                 <li className={passwordValidation.isValidLength ? 'text-success' : 'text-danger'}><i className={passwordValidation.isValidLength ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> Min 8 chars and Max 12 chars</li>
                             </ul>
+                            <span ref={message} className='text-danger fw-bolder pt-2'></span>
                             <div className='pt-3 d-grid d-lg-flex justify-content-center justify-content-lg-between' style={{ alignItems: "center" }}>
                                 <button className='loginbtn fw-bolder' onClick={dispatchdata}>Register</button>
                                 <Link to="/login" className='changepage mt-2 py-2 px-3'>Already have an account!</Link>

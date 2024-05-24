@@ -43,7 +43,7 @@ function ProductDetails() {
             setqty(check?.stock)
         }
 
-    }, [params.id, loguser.cart, data.id]);
+    }, [params.id, loguser?.cart, data.id]);
 
     const pluscart = () => {
         setqty(qty + 1)
@@ -155,7 +155,7 @@ function ProductDetails() {
                                 <div className='py-2' style={{ color: "grey" }}>{data.description}</div>
                                 <div className='py-4'>
                                     <div className='d-flex'>
-                                        <div><input type="text" className='qtyvalue' value={qty} /></div>
+                                        <div><input type="text" className='qtyvalue' value={qty} readOnly/></div>
                                         <div className='d-grid qtybtn'>
                                             <button onClick={pluscart}><i className="bi bi-caret-up"></i></button>
                                             <button onClick={minusecart}><i className="bi bi-caret-down"></i></button>

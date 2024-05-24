@@ -10,7 +10,7 @@ const updateLocalStorage = (state) => {
     localStorage.setItem('userdata', JSON.stringify(state.value));
     localStorage.setItem('loguser', JSON.stringify(state.logindata));
 };
-var storeIndex = initialState.value.findIndex((item) => item.email === initialState.logindata.email);
+var storeIndex = initialState?.value.findIndex((item) => item?.email === initialState.logindata?.email);
 export const userSlice = createSlice({
     name: 'user',
     initialState,

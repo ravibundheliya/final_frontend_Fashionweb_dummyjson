@@ -35,32 +35,31 @@ function Wishlist() {
     return (
         <div>
             {
-                (cartvalue?.length > 0) ?
-                    <div className='text-center px-5 pt-5'>
-                        <button className='px-5 py-3 addtobtn newaddtobtn' onClick={confirmdelete}>Clear List</button>
-                    </div>
-                    : ""
+                (cartvalue?.length > 0) &&
+                <div className='text-center px-5 pt-5'>
+                    <button className='px-5 py-3 addtobtn newaddtobtn' onClick={confirmdelete}>Clear List</button>
+                </div>
             }
             <Container className='pt-3 pb-5'>
                 <Row>
                     <Col className='px-3 p-md-0 '>
                         <table width={"100%"}>
                             {
-                                (cartvalue?.length !== 0) ?
-                                    <thead className='carthead'>
-                                        <tr className='text-uppercase'>
-                                            <th></th>
-                                            <th></th>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Add to Cart</th>
-                                        </tr>
-                                    </thead> : ''
+                                (cartvalue?.length > 0) &&
+                                <thead className='carthead'>
+                                    <tr className='text-uppercase'>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Add to Cart</th>
+                                    </tr>
+                                </thead>
                             }
                             <tbody>
                                 {/* Mapping Cart Product */}
                                 {
-                                    ((cartvalue?.length !== 0))
+                                    (cartvalue?.length > 0)
                                         ? cartvalue?.map((item, index) => {
                                             return (
                                                 <tr className='cartborder text-center text-md-start' key={item.id}>
@@ -74,10 +73,10 @@ function Wishlist() {
                                                 </tr>
                                             )
                                         })
-                                        : <tr>
+                                        : (<tr>
                                             <td colSpan={6} align='center'><h1 className='emptytext'>List is Empty</h1></td>
                                         </tr>
-                                }
+                                )}
                             </tbody>
                         </table>
 

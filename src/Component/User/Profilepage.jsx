@@ -38,9 +38,21 @@ function Profilepage() {
                   <div className='dataname'>Password : </div>
                   <div className='dataitem'>{user.password}</div>
                 </div>
-                <div className='datalist_sub w-100 d-flex'>
-                  <div className='dataname'>Address : </div>
-                  <div className='dataitem' style={{ color: "lightgray" }}>{(user.address) ? user.address : "Didn't added yet !"}</div>
+                <div className='datalist_sub w-100 d-flex' style={{ alignItems: "start" }}>
+                  <div className='dataname pt-2'>Address : </div>
+                  {
+                    (user.address.length !== 0)
+                      ? <div className='dataitem d-grid p-0' style={{ borderWidth: "0", gap: "10px" }}>
+                        {
+                          user.address.map((item, index) => {
+                            return (
+                              <div className='newdataitem' style={{ color: "black" }}>{item.label}</div>
+                            )
+                          })
+                        }
+                      </div>
+                      : <div className='dataitem' style={{ color: "lightgray" }}>"Didn't added yet !"</div>
+                  }
                 </div>
               </div>
 

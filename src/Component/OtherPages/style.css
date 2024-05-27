@@ -246,7 +246,8 @@
 }
 
 .loginbox {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid black;
     box-shadow: 0 0 10px lightgray;
 }
 
@@ -254,6 +255,7 @@
     font-size: 14px;
     font-weight: 500;
 }
+
 .boxtext label {
     font-size: 14px;
     font-weight: 500;
@@ -280,6 +282,18 @@
     background-color: black;
 }
 
+.submitbtn {
+    background-color: #bdbdbd;
+    border: 1px solid #bdbdbd;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: .3s;
+    font-size: 14px;
+    cursor: context-menu;
+}
+
 
 .cntformttl {
     font-size: 20px;
@@ -298,9 +312,48 @@
     background-color: #393939;
 }
 
+.backImg {
+    background-image: url('../../img/asset 27.jpeg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left;
+}
+
+.newBackImg {
+    background-image: url('../../img/asset 42.jpeg');
+    background-size: auto 100%;
+}
+
+.headingPage {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 10px;
+    font-size: 55px;
+    line-height: 80px;
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+}
+
+.headingPage span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.containPage {
+    padding: 100px 0px;
+}
+
 @media (max-width: 1200px) {
     .allcnt {
         padding: 0rem 3rem;
+    }
+}
+
+@media (max-width: 990px) {
+    .backImg {
+        background-size: auto 100%;
+    }
+    .containPage{
+        padding: 50px 0px;
     }
 }
 
@@ -309,6 +362,7 @@
         display: grid;
         gap: 25px;
     }
+    
 }
 
 

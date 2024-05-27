@@ -16,156 +16,177 @@ function Signinpage() {
         address: []
     });
 
-    const [passwordValidation, setPasswordValidation] = useState({
-        hasUppercase: false,
-        hasLowercase: false,
-        hasNumber: false,
-        hasSymbol: false,
-        isValidLength: false
-    });
-
-    const name = useRef();
-    const mobile = useRef();
-    const email = useRef();
-    const password = useRef();
-    const message = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userFromRedux = useSelector((state) => state.user.value);
+    const [err, setErr] = useState({});
+    const [disableButton, setDisableButton] = useState(false);
+    const mobileError = useRef();
+    const emailError = useRef();
 
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setformData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
-        const uppercase = /[A-Z]/;
-        const lowercase = /[a-z]/;
-        const number = /[0-9]/;
-        const symbol = /[!@#$%^&*_=+-]/;
-        if (name === "password") {
-            setPasswordValidation({
-                hasUppercase: uppercase.test(value),
-                hasLowercase: lowercase.test(value),
-                hasNumber: number.test(value),
-                hasSymbol: symbol.test(value),
-                isValidLength: value.length >= 8 && value.length <= 12
-            });
+    const checkValidation = (obj) => {
+        err[obj?.key] = '';
+        if (!obj?.value?.match(obj?.pattern)) {
+            err[obj.key] = "Invalid Pattern";
         }
-    };
-    const validEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const validMobile = (mobile) => /^[0-9]{10}$/.test(mobile);
-    const validPassword = (password) => /^[a-zA-Z0-9!@#%^&*_=+-]{8,12}$/.test(password);
-    const emailEntery = (email) => userFromRedux.some(item => item.email === email);
-    const mobileEntery = (mobile) => userFromRedux.some(item => item.mobile === mobile);
+        setErr({ ...err });
+        setformData((preData) => ({
+            ...preData,
+            [obj.key]: obj.value
+        }))
+        if (Object.values(err).every((item) => item === '') && Object.values(formData).every((item) => item !== '')) {
+            setDisableButton(true);
+        }
+        else {
+            setDisableButton(false);
+        }
+    }
 
-    const dispatchdata = () => {
-        if (formData.name && formData.email && formData.mobile && formData.password) {
-            if (!validEmail(formData.email)) {
-                email.current.style.borderColor = "red";
-                email.current.style.borderWidth = "2px";
-                const notify = () => toast("Enter valid Email !");
-                notify();
-            }
-            else if (!validMobile(formData.mobile)) {
-                mobile.current.style.borderColor = "red";
-                mobile.current.style.borderWidth = "2px";
-                const notify = () => toast("Enter valid Mobile !");
-                notify();
-            }
-            else if (!validPassword(formData.password)) {
-                password.current.style.borderColor = "red";
-                password.current.style.borderWidth = "2px";
-                const notify = () => toast("Enter valid Password !");
-                notify();
-            }
-            else if (emailEntery(formData.email)) {
-                email.current.style.borderColor = "red";
-                email.current.style.borderWidth = "2px";
-                const notify = () => toast("Entered Email is already added !");
-                notify();
-            }
-            else if (mobileEntery(formData.mobile)) {
-                mobile.current.style.borderColor = "red";
-                mobile.current.style.borderWidth = "2px";
-                const notify = () => toast("Entered Mobile is already added !");
-                notify();
-            }
-            else {
-                dispatch(adduser(formData))
-                setformData({
-                    name: '',
-                    mobile: '',
-                    email: '',
-                    password: ''
-                });
+    const handleFocus = (obj) => {
+        if (obj.value === '') {
+            setErr((prevData) => ({
+                ...prevData,
+                [obj.key]: "This is Required"
+            }))
+        }
+    }
+
+    const storeData = () => {
+        const checkMail = userFromRedux.find((item) => item.email === formData.email)
+        const checkMobile = userFromRedux.find((item) => item.mobile === formData.mobile)
+
+        if (Object.values(err).every((item) => item === '') && Object.values(formData).every((item) => item !== '')) {
+            if (!checkMail && !checkMobile) {
+                dispatch(adduser(formData));
                 navigate("/login");
+                setErr({});
+            } else {
+                if (checkMail) {
+                    toast("Email is already logged in...");
+                    setErr((prevErr) => ({
+                        ...prevErr,
+                        email: "Email is already logged in..."
+                    }));
+                    emailError.current.style.borderColor = "red";
+                    emailError.current.style.borderWidth = "2px";
+                }
+                else {
+                    emailError.current.style.borderColor = "lightgray";
+                    emailError.current.style.borderWidth = "1px";
+                }
+                if (checkMobile) {
+                    toast("Mobile is already logged in...");
+                    setErr((prevErr) => ({
+                        ...prevErr,
+                        mobile: "Mobile is already logged in..."
+                    }));
+                    mobileError.current.style.borderColor = "red";
+                    mobileError.current.style.borderWidth = "2px";
+                }
+                else {
+                    mobileError.current.style.borderColor = "lightgray";
+                    mobileError.current.style.borderWidth = "1px";
+                }
+                setDisableButton(false);
             }
         } else {
-            name.current.style.borderColor = "red";
-            name.current.style.borderWidth = "2px";
-            mobile.current.style.borderColor = "red";
-            mobile.current.style.borderWidth = "2px";
-            email.current.style.borderColor = "red";
-            email.current.style.borderWidth = "2px";
-            password.current.style.borderColor = "red";
-            password.current.style.borderWidth = "2px";
-            message.current.innerText = "*Enter All details !";
-            const notify = () => toast("Enter All details !");
-            notify();
+            toast("Enter All Details Correct...");
         }
-    };
+
+    }
 
     return (
-        <div>
+        <div className='backImg newBackImg'>
             <Container className='py-5'>
                 <Row className='px-3 px-sm-0'>
-                    <Col className='p-3 p-md-4 loginbox'>
+                    <Col className='col-0 col-lg-6 d-flex' style={{ alignItems: "center" }}>
+                        <h1 className='headingPage fw-bolder d-none d-lg-block' style={{textShadow:"0 0 5px #FFFDD0"}}>Embrace fashion's transformative power.</h1>
+                    </Col>
+                    <Col className='col-12 col-lg-6 p-3 p-md-4 loginbox'>
                         <h3 className='fw-bolder text-center'>Register an account</h3>
                         <div className='boxtext d-grid'>
-                            <span className='pt-3'>Name <span className='text-danger fw-bolder'> *</span></span>
+                            <span className='pt-3 fw-bolder'>Name <span className='text-danger fw-bolder'> *</span></span>
                             <input
                                 type="text"
                                 name="name"
+                                pattern='^[A-Za-z ]{4,10}$'
                                 value={formData.name}
-                                onChange={handleChange}
-                                ref={name}
+                                onFocus={(e) => handleFocus({
+                                    required: true,
+                                    key: e?.target?.name,
+                                    value: e?.target?.value
+                                })}
+                                onChange={(e) => checkValidation({ key: e?.target?.name, value: e?.target?.value, pattern: e?.target?.pattern, required: true })}
                             />
-                            <span className='pt-3'>Mobile <span className='text-danger fw-bolder'> *</span></span>
+                            {
+                                err?.name
+                                    ? <span className="text-danger">{err.name}</span>
+                                    : ''
+                            }
+                            <span className='pt-3 fw-bolder'>Mobile <span className='text-danger fw-bolder'> *</span></span>
                             <input
                                 type="number"
                                 name="mobile"
+                                pattern='^[0-9]{10}$'
+                                ref={mobileError}
                                 value={formData.mobile}
-                                onChange={handleChange}
-                                ref={mobile}
+                                onFocus={(e) => handleFocus({
+                                    required: true,
+                                    key: e?.target?.name,
+                                    value: e?.target?.value
+                                })}
+                                onChange={(e) => checkValidation({ key: e?.target?.name, value: e?.target?.value, pattern: e?.target?.pattern, required: true })}
                             />
-                            <span className='pt-3'>Email Address <span className='text-danger fw-bolder'> *</span></span>
+                            {
+                                err?.mobile
+                                    ? <span className="text-danger">{err.mobile}</span>
+                                    : ''
+                            }
+                            <span className='pt-3 fw-bolder'>Email Address <span className='text-danger fw-bolder'> *</span></span>
                             <input
                                 type="email"
                                 name="email"
+                                pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
                                 value={formData.email}
-                                onChange={(e) => handleChange(e)}
-                                ref={email}
+                                ref={emailError}
+                                onFocus={(e) => handleFocus({
+                                    required: true,
+                                    key: e?.target?.name,
+                                    value: e?.target?.value
+                                })}
+                                onChange={(e) => checkValidation({ key: e?.target?.name, value: e?.target?.value, pattern: e?.target?.pattern, required: true })}
                             />
-                            <span className='pt-3'>Create Password <span className='text-danger fw-bolder'> *</span></span>
+                            {
+                                err?.email
+                                    ? <span className="text-danger">{err.email}</span>
+                                    : ''
+                            }
+                            <span className='pt-3 fw-bolder'>Create Password <span className='text-danger fw-bolder'> *</span></span>
                             <input
                                 type="password"
                                 name="password"
                                 value={formData.password}
-                                onChange={handleChange}
-                                ref={password}
+                                pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+                                onFocus={(e) => handleFocus({
+                                    required: true,
+                                    key: e?.target?.name,
+                                    value: e?.target?.value
+                                })}
+                                onChange={(e) => checkValidation({ key: e?.target?.name, value: e?.target?.value, pattern: e?.target?.pattern, required: true })}
                             />
-                            <ul className='d-grid d-lg-flex justify-content-between pt-2 fw-bolder'>
-                                <li className={passwordValidation.hasUppercase ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasUppercase ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Uppercase</li>
-                                <li className={passwordValidation.hasLowercase ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasLowercase ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Lowercase</li>
-                                <li className={passwordValidation.hasNumber ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasNumber ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Number</li>
-                                <li className={passwordValidation.hasSymbol ? 'text-success' : 'text-danger'}><i className={passwordValidation.hasSymbol ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> At least 1 Symbol</li>
-                                <li className={passwordValidation.isValidLength ? 'text-success' : 'text-danger'}><i className={passwordValidation.isValidLength ? 'bi bi-check-circle' : 'bi bi-x-circle'}></i> Min 8 chars and Max 12 chars</li>
-                            </ul>
-                            <span ref={message} className='text-danger fw-bolder pt-2'></span>
+                            {
+                                err?.password
+                                    ? <span className="text-danger">{err.password}</span>
+                                    : ''
+                            }
                             <div className='pt-3 d-grid d-lg-flex justify-content-center justify-content-lg-between' style={{ alignItems: "center" }}>
-                                <button className='loginbtn fw-bolder' onClick={dispatchdata}>Register</button>
+                                <button
+                                    className='submitbtn fw-bolder'
+                                    onClick={storeData}
+                                    style={disableButton ? { backgroundColor: "#141414", borderColor: "#141414", cursor: "pointer" } : { backgroundColor: "#bdbdbd", borderColor: "#bdbdbd", cursor: "default" }}
+                                >
+                                    Register
+                                </button>
                                 <Link to="/login" className='changepage mt-2 py-2 px-3'>Already have an account!</Link>
                             </div>
                         </div>

@@ -32,27 +32,47 @@ function Loginpage() {
         else {
             const notify1 = () => toast("Enter valid Email and Password...");
             notify1();
-            email.current.style.borderColor="red";
-            email.current.style.borderWidth="2px";
-            password.current.style.borderColor="red";
-            password.current.style.borderWidth="2px";
-            message.current.innerText="* Enter Valid Email and Password";
+            email.current.style.borderColor = "red";
+            email.current.style.borderWidth = "2px";
+            password.current.style.borderColor = "red";
+            password.current.style.borderWidth = "2px";
+            message.current.innerText = "* Enter Valid Email and Password";
         }
     }
     return (
-        <div>
-            <Container className='py-5'>
-                <Row className='px-3 px-sm-0'>
-                    <Col className='p-3 p-md-4 loginbox'>
+        <div className='backImg'>
+            <Container className='containPage'>
+                <Row className='px-4 px-sm-0'>
+                    <Col className='col-0 col-lg-6 d-flex' style={{alignItems:"center"}}>
+                        <h1 className='headingPage fw-bolder d-none d-lg-block'><span className='text-info'>Welcome</span> to the <span>Amazing</span> world of <span style={{color:"#BE7354"}}>Fashion !</span></h1>
+                    </Col>
+                    <Col className='col-12 col-lg-6 p-3 p-md-4 loginbox'>
                         <h3 className='fw-bolder text-center'>Login</h3>
                         <div className='boxtext d-grid'>
-                            <span className='pt-3'>Email Address <span className='text-danger fw-bolder'> *</span></span>
-                            <input type="email" ref={email} name="email" value={data.email} onChange={(e) => handleChange(e)} />
-                            <span className='pt-3'>Password <span className='text-danger fw-bolder'> *</span></span>
-                            <input type="password" ref={password} name="password" value={data.password} onChange={(e) => handleChange(e)} />
+                            <span className='pt-3 fw-bolder'>Email Address <span className='text-danger fw-bolder'> *</span></span>
+                            <input
+                                type="email"
+                                ref={email}
+                                name="email"
+                                value={data.email}
+                                onChange={(e) => handleChange(e)}
+                            />
+                            <span className='pt-3 fw-bolder'>Password <span className='text-danger fw-bolder'> *</span></span>
+                            <input
+                                type="password"
+                                ref={password}
+                                name="password"
+                                value={data.password}
+                                onChange={(e) => handleChange(e)}
+                            />
                             <span ref={message} className='text-danger fw-bolder pt-2'></span>
                             <div className='pt-4 pt-lg-3 d-grid d-lg-flex justify-content-center justify-content-lg-between' style={{ alignItems: "center" }}>
-                                <button className='loginbtn fw-bolder' onClick={checkingdata}>Log in</button>
+                                <button
+                                    className='loginbtn fw-bolder'
+                                    onClick={checkingdata}
+                                >
+                                    Log in
+                                </button>
                                 <Link to="/login" className='text-dark my-3 my-lg-0' style={{ textDecoration: "underline", fontSize: "14px" }}>Forgotten password?</Link>
                             </div>
                         </div>

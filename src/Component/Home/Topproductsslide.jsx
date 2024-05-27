@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import OwlCarousel from 'react-owl-carousel';
@@ -7,6 +7,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Loader from "react-js-loader";
 
 const obj = {
     loop: true,
@@ -31,9 +33,32 @@ const obj = {
         }
     }
 }
-function Topproductsslide(props) {
+function Topproductsslide() {
+
+    const [productData, setproductData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        setLoading(true);
+        setproductData([]);
+        axios.get('https://dummyjson.com/products')
+            .then(function (response) {
+                setproductData(response.data.products);
+                setLoading(false)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, [])
+    console.log(productData , '---');
     return (
         <div>
+            {/* {
+                productData.map((item)=>{
+                    return(
+                        <h1>{item.title}</h1>
+                    )
+                })
+            } */}
             <Container style={{ overflow: "hidden" }}>
                 <Row style={{ overflow: "hidden" }}>
                     <Col className='col-12 col-md-8 sld-ttl' data-aos="slide-up" data-aos-duration="600">Top Selling Products</Col>
@@ -41,12 +66,23 @@ function Topproductsslide(props) {
                 </Row>
                 <hr data-aos="slide-left" />
             </Container>
-            <Container className='pb-5' style={{ overflow: "hidden" }}>
-                <OwlCarousel className='owl-theme'{...obj} data-aos="zoom-in-left" data-aos-duration="1000">
+            {loading && (
+                <div className={"content pt-5"}>
+                    <div className={"zoom-out"}>
+                        <div className={"row g-0"}>
+                            <div className={"item "}>
+                                <Loader type="bubble-scale" bgColor={"#000000"} color={"#FFFFFF"} title={"bubble-scale"} size={100} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <Container className='pb-5'>
+                <OwlCarousel className='owl-theme'{...obj}>
                     {
-                        props.data.map((item, index) => {
+                        productData.map((item, index) => {
                             return (
-                                <div className='item text-center prdback' key={item.id}>
+                                <div className='item text-center prdback'>
                                     <Card style={{ width: '100%' }}>
                                         <Card.Img variant="top" src={item.thumbnail} width={"100%"} />
                                         <div className='icn'>

@@ -67,7 +67,7 @@ function ProductDetails() {
                 const notify2 = () => toast("Product added to cart");
                 notify2();
             }
-            if(checkWish){
+            if (checkWish) {
                 dispatch(userdeletewish(data.id))
                 const notify2 = () => toast("Product moved from wishlist to cart");
                 notify2();
@@ -90,12 +90,12 @@ function ProductDetails() {
                 const notify1 = () => toast("Product already in cart!");
                 notify1();
             }
-            if (!checkWish) {
+            if (!checkWish && !check) {
                 dispatch(userpushwish(updatevalue))
                 const notify2 = () => toast("Product added to Wishlist");
                 notify2();
             }
-            else {
+            if(checkWish) {
                 const notify1 = () => toast("Product already in Wishlist!");
                 notify1();
             }
@@ -155,7 +155,7 @@ function ProductDetails() {
                                 <div className='py-2' style={{ color: "grey" }}>{data.description}</div>
                                 <div className='py-4'>
                                     <div className='d-flex'>
-                                        <div><input type="text" className='qtyvalue' value={qty} readOnly/></div>
+                                        <div><input type="text" className='qtyvalue' value={qty} readOnly /></div>
                                         <div className='d-grid qtybtn'>
                                             <button onClick={pluscart}><i className="bi bi-caret-up"></i></button>
                                             <button onClick={minusecart}><i className="bi bi-caret-down"></i></button>

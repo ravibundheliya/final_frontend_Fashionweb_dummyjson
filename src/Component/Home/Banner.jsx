@@ -16,7 +16,7 @@ function Banner() {
                             <div className='ppcolor'></div>
                             <div className='pin'>
                                 <h4>Spring Collection</h4>
-                                <Link to={'/'}>Shop now</Link>
+                                <Link to={'/productpage'}>Shop now</Link>
                             </div>
                         </div>
                     </Col>
@@ -28,7 +28,7 @@ function Banner() {
                             <div className='ppcolor'></div>
                             <div className='pin'>
                                 <h4>Spring Collection</h4>
-                                <Link to={'/'}>Shop now</Link>
+                                <Link to={'/productpage'}>Shop now</Link>
                             </div>
                         </div>
                     </Col>
@@ -40,7 +40,7 @@ function Banner() {
                             <div className='ppcolor'></div>
                             <div className='pin'>
                                 <h4>Spring Collection</h4>
-                                <Link to={'/'}>Shop now</Link>
+                                <Link to={'/productpage'}>Shop now</Link>
                             </div>
                         </div>
                     </Col>

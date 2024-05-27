@@ -55,7 +55,7 @@ function Header() {
 
                     {(loginuser === null)
                       ? <NavLink to="/login"><Button variant="outline-dark">Login/Signin</Button></NavLink>
-                      : <div className='d-flex'style={{alignItems:"center"}}><span style={{fontSize:"14px"}}>Welcome <span className='fw-bolder'>{loginuser.name}</span> !</span><NavLink className={(e) => { return e.isActive ? "activenav extcss p-1" : "extcss p-1" }} as={Link} to="/profile"><i className="bi bi-person" style={{fontSize:"25px"}}></i> </NavLink></div>
+                      : <div className='d-flex'style={{alignItems:"center"}}><span style={{fontSize:"14px"}}>Welcome <span className='fw-bolder ps-1' style={{fontSize:"16px"}}>{loginuser.name}</span> !</span><NavLink className={(e) => { return e.isActive ? "activenav extcss p-1" : "extcss p-1" }} as={Link} to="/profile"><i className="bi bi-person" style={{fontSize:"25px"}}></i> </NavLink></div>
                     }
                   </Nav.Item>
                   <Nav.Item className='d-flex justify-content-center'>

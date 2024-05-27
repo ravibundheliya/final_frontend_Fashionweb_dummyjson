@@ -7,6 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+
 const obj = {
     loop: true,
     margin: 0,
@@ -30,19 +31,39 @@ const obj = {
         }
     }
 }
-function Topproductsslide() {
+function Topproductsslide(props) {
     return (
         <div>
-            <Container style={{overflow:"hidden"}}>
-                <Row style={{overflow:"hidden"}}>
+            <Container style={{ overflow: "hidden" }}>
+                <Row style={{ overflow: "hidden" }}>
                     <Col className='col-12 col-md-8 sld-ttl' data-aos="slide-up" data-aos-duration="600">Top Selling Products</Col>
                     <Col className='col-12 col-md-4 sld-dtl text-start text-md-end pt-0 pt-md-4 text-uppercase' data-aos="slide-up" data-aos-duration="600"><a href="/">more products</a></Col>
                 </Row>
-                <hr data-aos="slide-left"/>
+                <hr data-aos="slide-left" />
             </Container>
-            <Container className='pb-5' style={{overflow:"hidden"}}>
+            <Container className='pb-5' style={{ overflow: "hidden" }}>
                 <OwlCarousel className='owl-theme'{...obj} data-aos="zoom-in-left" data-aos-duration="1000">
-                    <div className='item text-center prdback'>
+                    {
+                        props.data.map((item, index) => {
+                            return (
+                                <div className='item text-center prdback' key={item.id}>
+                                    <Card style={{ width: '100%' }}>
+                                        <Card.Img variant="top" src={item.thumbnail} width={"100%"} />
+                                        <div className='icn'>
+                                            <div><i className="bi bi-eye"></i></div>
+                                            <div><i className="bi bi-heart"></i></div>
+                                            <div><i className="bi bi-cart"></i></div>
+                                        </div>
+                                        <Card.Body>
+                                            <Card.Title><Link to={`/productpage/${item.id}`} className='text-dark'>{item.title}</Link></Card.Title>
+                                            <h4 className='fw-bold'><i className="bi bi-currency-rupee text-dark"></i>{item.price}</h4>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
+                            )
+                        })
+                    }
+                    {/* <div className='item text-center prdback'>
                         <Card style={{ width: '100%' }}>
                             <Card.Img variant="top" src={require('../../img/asset 7.jpeg')} width={"100%"} />
                             <div className='icn'>
@@ -125,7 +146,7 @@ function Topproductsslide() {
                                 <h4 className='fw-bold'><i className="bi bi-currency-rupee text-dark"></i>7449</h4>
                             </Card.Body>
                         </Card>
-                    </div>
+                    </div> */}
                 </OwlCarousel>
             </Container >
         </div>

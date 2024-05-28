@@ -38,8 +38,7 @@ function App() {
       <Container fluid>
         <Row className='text-center'>
           <Col className='text-light pt-3 pb-3' style={{ backgroundColor: '#1f1f1f', fontSize: '14px' }}>
-            Join our showroom and get 25 % off ! Coupon code : Bangbang45
-            <div></div>
+            Join and get 10 % off ! Coupon code : FIRST10
           </Col>
         </Row>
       </Container>
@@ -52,17 +51,17 @@ function App() {
         <Route path='/productpage' element={<Page1 />} />
         <Route path='/cart' element={<Cartpage />} />
         <Route path='/productpage/:id' element={<ProductDetails />} />
-        <Route path='/login' element={<Loginpage/>} />
-        <Route path='/signin' element={<Signinpage/>} />
-        <Route path='/wishlist' element={<Wishlist/>} />
-        <Route path='/profile' element={<Profilepage/>} />
-        <Route path='/address' element={<Profileaddress/>} />
-        <Route path='/resetpass' element={<Resetpass/>} />
-        <Route path='/orderpage' element={<OrderPage/>} />
-        <Route path='/orderdetails' element={<OrderDetails/>} />
+        <Route path='/login' element={<Loginpage />} />
+        <Route path='/signin' element={<Signinpage />} />
+        <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/profile' element={<Profilepage />} />
+        <Route path='/address' element={<Profileaddress />} />
+        <Route path='/resetpass' element={<Resetpass />} />
+        <Route path='/orderpage' element={<OrderPage />} />
+        <Route path='/orderdetails' element={<OrderDetails />} />
       </Routes>
       <Footer />
-      <Stickyheader/>
+      <Stickyheader />
     </>
   );
 }

@@ -22,6 +22,7 @@ import Profilepage from './Component/User/Profilepage';
 import Profileaddress from './Component/User/Profileaddress';
 import Resetpass from './Component/User/Resetpass';
 import OrderPage from './Component/Product_cart_page/OrderPage';
+import OrderDetails from './Component/User/OrderDetails';
 
 function App() {
 
@@ -58,7 +59,7 @@ function App() {
         <Route path='/address' element={<Profileaddress/>} />
         <Route path='/resetpass' element={<Resetpass/>} />
         <Route path='/orderpage' element={<OrderPage/>} />
-        
+        <Route path='/orderdetails' element={<OrderDetails/>} />
       </Routes>
       <Footer />
       <Stickyheader/>

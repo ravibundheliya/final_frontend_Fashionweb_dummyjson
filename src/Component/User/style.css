@@ -83,6 +83,9 @@
     border-color: black;
 }
 
+.ordertable{
+    width: 100%;
+}
 .ordertable tr{
     border: 1px solid lightgray;
 }
@@ -103,6 +106,9 @@
 @media (max-width: 768px){
     .stylebtn{
         font-size: 12px;
+    }
+    .tablecontain{
+        overflow-x: scroll;
     }
 }
 @media (max-width: 578px){

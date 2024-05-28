@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
 function Profileaddress() {
+    const user = useSelector((state) => state.user.logindata.orders)
     const [droplist, setdroplist] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -116,7 +117,7 @@ function Profileaddress() {
                                         </div>
                                     )
                                 })
-                                : <h1 className='text-center pt-5'>Add your Address</h1>
+                                : <h1 className='text-center pt-5' style={{ color: "lightgray" }}>Add your Address</h1>
                         }
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
@@ -158,9 +159,13 @@ function Profileaddress() {
                                 </Row>
                             </Modal.Body>
                         </Modal>
-                        <div className='d-flex justify-content-end'>
-                            <Link to='/orderpage' className='mt-4 stylebtn newstylebtn fw-bold text-uppercase p-2 px-md-3 py-md-2'>Checkout Page</Link>
-                        </div>
+                        {
+                            (user.some((item) => item.status === "pending"))
+                                ? <div className='d-flex justify-content-end'>
+                                    <Link to='/orderpage' className='mt-4 stylebtn newstylebtn fw-bold text-uppercase p-2 px-md-3 py-md-2'>Checkout Page</Link>
+                                </div>
+                                : ''
+                        }
                     </Col>
                 </Row>
             </Container>

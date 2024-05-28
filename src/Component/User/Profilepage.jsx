@@ -17,52 +17,7 @@ function Profilepage() {
           </Col>
           <Col className='col-12 col-md-7 col-lg-9 pt-4 pt-md-0'>
             <div className='profilehdr_sub'>
-              <h3 className='fw-bold'>Order History</h3>
-              <div style={{ color: "grey" }}>You haven't placed any orders yet.</div>
-              <table border={"2px"} className='ordertable'>
-                <tr>
-                  <th>Status</th>
-                  <th>Products</th>
-                  <th>Address</th>
-                  <th>Total</th>
-                  <th>Date / Time</th>
-                </tr>
-                {
-                  user.orders.map((item) => {
-                    return (
-                      <tr>
-                        <td className={"text-success fw-bold"}>
-                          {/* {item.status} */}
-                          {
-                            (item.status === "pending")
-                            ?<Link to='/orderpage' className='text-warning' style={{textDecoration:"underline"}}>{item.status}</Link>
-                            : <span>{item.status}</span>
-                          }
-                        </td>
-                        <td>
-                          <ul className='m-0'>
-                            {
-                              item.products.map((item) => {
-                                return (
-                                  <li>
-                                    <span>{item.title}</span>
-                                    <span className='ps-2'>x {item.cartqty}</span>
-                                  </li>
-                                )
-                              })
-                            }
-                          </ul>
-                        </td>
-                        <td>{item.shippingAddress.label}</td>
-                        <td>₹ {item.grandTotal}</td>
-                        <td>28/05/2024 15:00 PM</td>
-                      </tr>
-                    )
-                  })
-                }
-              </table>
               <h3 className='pt-5 pb-3 fw-bold'>Account Details</h3>
-
               <div className='datalist_main d-grid'>
                 <div className='datalist_sub w-100 d-flex'>
                   <div className='dataname'>Username : </div>

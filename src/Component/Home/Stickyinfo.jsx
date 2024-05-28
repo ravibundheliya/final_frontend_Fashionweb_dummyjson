@@ -2,7 +2,7 @@ import React from 'react'
 
 function Stickyinfo() {
     return (
-        <div>
+        <div className='pt-4'>
             <section className='new_fashion'>
                 <div className='new_fashion_perent'>
                     <img src={require('../../img/asset 23.jpeg')} alt="" className='new_fashion_img' />

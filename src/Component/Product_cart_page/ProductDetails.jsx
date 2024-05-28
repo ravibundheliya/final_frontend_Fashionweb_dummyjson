@@ -40,7 +40,7 @@ function ProductDetails() {
 
         const check = loguser?.cart.find((item) => item.id === data.id)
         if (check) {
-            setqty(check?.stock)
+            setqty(check?.cartqty)
         }
 
     }, [params.id, loguser?.cart, data.id]);
@@ -51,13 +51,16 @@ function ProductDetails() {
     const minusecart = () => {
         setqty((qty > 1) ? qty - 1 : 1)
     }
+    
 
     const addtocart = () => {
         if (loguser) {
-            const updatevalue = { ...data, stock: qty }
+            const newTotal = data?.price*qty;
+            const updateData = {...data, cartqty: qty, totalprice: newTotal}
             const check = usercart.find(item => item.id === data.id)
             const checkWish = userwish.find(item => item.id === data.id)
-            dispatch(userpushdata(updatevalue))
+            dispatch(userpushdata(updateData));
+            console.log(usercart);
             setqty(1);
             if (check) {
                 const notify1 = () => toast("Product quantity updated!");
@@ -79,10 +82,11 @@ function ProductDetails() {
         }
 
     }
-
+    
     const addtowish = () => {
         if (loguser) {
-            const updatevalue = { ...data, stock: qty }
+            const newTotal = data?.price*qty;
+            const updateData = {...data, cartqty: qty, totalprice: newTotal}
             const check = usercart.find(item => item.id === data.id)
             const checkWish = userwish.find(item => item.id === data.id)
             setqty(1);
@@ -91,7 +95,7 @@ function ProductDetails() {
                 notify1();
             }
             if (!checkWish && !check) {
-                dispatch(userpushwish(updatevalue))
+                dispatch(userpushwish(updateData))
                 const notify2 = () => toast("Product added to Wishlist");
                 notify2();
             }

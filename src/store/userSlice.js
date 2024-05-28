@@ -61,7 +61,7 @@ export const userSlice = createSlice({
         },
 
         deleteaddress: (state, action) => {
-            state.logindata.address = state.logindata.address.filter((item)=> item.label !== action.payload)
+            state.logindata.address = state.logindata.address.filter((item) => item.label !== action.payload)
             if (storeIndex !== -1) {
                 state.value[storeIndex].address = state.logindata.address;
             }
@@ -71,7 +71,8 @@ export const userSlice = createSlice({
         userpushdata: (state, action) => {
             const check = state.logindata.cart.find(item => item.id === action.payload.id);
             if (check) {
-                check.stock = action.payload.stock;
+                check.cartqty = action.payload.cartqty;
+                check.totalprice = action.payload.totalprice;
             } else {
                 state.logindata.cart.push(action.payload);
             }
@@ -117,13 +118,33 @@ export const userSlice = createSlice({
             }
             updateLocalStorage(state);
         },
-        userclearwish: (state, action) => {
+        userclearwish: (state) => {
             state.logindata.wishlist = [];
             if (storeIndex !== -1) {
                 state.value[storeIndex].wishlist = [];
             }
             updateLocalStorage(state);
-        }
+        },
+        userPushOrder: (state, action) => {
+            const check = state.logindata.orders.find((item) => item?.status === "pending")
+            if (check) {
+                // check.status = "confirm";
+                check.status = action.payload.status;
+                check.shippingAddress = action.payload.shippingAddress;
+                check.subTotal = action.payload.subTotal;
+                check.products = action.payload.products;
+                check.shippingCharges = action.payload.shippingCharges;
+                check.couponCode = action.payload.couponCode;
+                check.grandTotal = action.payload.grandTotal;
+            }
+            else {
+                state.logindata.orders.push(action.payload);
+            }
+            if (storeIndex !== -1) {
+                state.value[storeIndex].orders = state.logindata.orders;
+            }
+            updateLocalStorage(state);
+        },
     },
 });
 
@@ -141,7 +162,8 @@ export const {
     userclearwish,
     resetpassword,
     addUserAddress,
-    deleteaddress
+    deleteaddress,
+    userPushOrder
 
 } = userSlice.actions;
 

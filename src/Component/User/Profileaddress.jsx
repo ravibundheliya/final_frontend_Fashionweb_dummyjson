@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUserAddress, deleteaddress } from '../../store/userSlice';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 function Profileaddress() {
     const [droplist, setdroplist] = useState(false);
@@ -66,7 +67,7 @@ function Profileaddress() {
                                 ? <Row className='pt-3'>
                                     <Col className='col-12 boxtext'>
                                         <label htmlFor="label">Address Label<span className='text-danger fw-bolder'> *</span></label>
-                                        <input type="text" id='label' name='label' value={address.label} onChange={handleChange} className='w-100' />
+                                        <input type="text" id='label' name='label' value={address.label} placeholder='Ex. : Home, Office etc...' onChange={handleChange} className='w-100' />
                                     </Col>
                                     <Col className='col-12 boxtext pt-3'>
                                         <label htmlFor="area">Address Apartment, suite, etc.<span className='text-danger fw-bolder'> *</span></label>
@@ -157,6 +158,9 @@ function Profileaddress() {
                                 </Row>
                             </Modal.Body>
                         </Modal>
+                        <div className='d-flex justify-content-end'>
+                            <Link to='/orderpage' className='mt-4 stylebtn newstylebtn fw-bold text-uppercase p-2 px-md-3 py-md-2'>Checkout Page</Link>
+                        </div>
                     </Col>
                 </Row>
             </Container>

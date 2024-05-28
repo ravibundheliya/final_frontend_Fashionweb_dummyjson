@@ -21,9 +21,11 @@ import Wishlist from './Component/Product_cart_page/Wishlist';
 import Profilepage from './Component/User/Profilepage';
 import Profileaddress from './Component/User/Profileaddress';
 import Resetpass from './Component/User/Resetpass';
-
+import OrderPage from './Component/Product_cart_page/OrderPage';
 
 function App() {
+
+
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -55,6 +57,7 @@ function App() {
         <Route path='/profile' element={<Profilepage/>} />
         <Route path='/address' element={<Profileaddress/>} />
         <Route path='/resetpass' element={<Resetpass/>} />
+        <Route path='/orderpage' element={<OrderPage/>} />
         
       </Routes>
       <Footer />

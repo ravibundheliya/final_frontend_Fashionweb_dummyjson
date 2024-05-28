@@ -83,6 +83,14 @@
     border-color: black;
 }
 
+.ordertable tr{
+    border: 1px solid lightgray;
+}
+.ordertable tr td,th{
+    border: 2px solid lightgray;
+    padding: 5px;
+}
+
 @media (min-width: 578px) and (max-width: 990px) {
     .dataname {
         width: 25%;

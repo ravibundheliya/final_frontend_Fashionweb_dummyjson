@@ -108,6 +108,50 @@
     border-width: 0px;
 }
 
+.slick-prev:before, .slick-next:before {
+    font-size: 30px;
+    display: grid;
+    top: 0;
+    padding: 0px 10px 15px 10px ;
+    opacity: 1;
+    color: black;
+    transition: .3s;
+}
+.slick-prev:before{
+    content: "‹";
+}
+.slick-next:before{
+    content: "›";
+}
+
+.slick-prev, .slick-next {
+    margin-top: 20px;
+    left: 50%;
+    top: 100% !important;
+    transform: translateX(-50%);
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border: 1px solid black;
+    transition: 0.3s;
+}
+
+.slick-prev {
+    transform: translateX(-120%);
+}
+
+.slick-next {
+    transform: translateX(10%);
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: black;
+}
+
+.slick-prev:hover:before, .slick-next:hover:before {
+    color: white !important;
+}
+
 @media(max-width: 990px) {
     .sldimage img {
         height: 100%;
@@ -120,6 +164,7 @@
         opacity: 0 !important;
     }
 }
+
 
 @media(min-width: 576px)and(max-width: 990px) {
     .carousel-caption {

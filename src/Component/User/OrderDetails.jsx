@@ -33,7 +33,6 @@ function OrderDetails() {
                                         return (
                                             <tr>
                                                 <td className={"text-success text-center fw-bold"}>
-                                                    {/* {item.status} */}
                                                     {
                                                         (item.status === "pending")
                                                             ? <Link to='/orderpage' className='text-warning' style={{ textDecoration: "underline" }}>{item.status}</Link>

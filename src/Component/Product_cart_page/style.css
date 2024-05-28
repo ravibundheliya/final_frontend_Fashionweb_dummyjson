@@ -15,7 +15,7 @@ li {
 
 .incatlist:hover {
     font-weight: 900;
-    color: orangered;
+    color: #C2572B;
 }
 
 .card {
@@ -431,7 +431,7 @@ textarea {
     background-color: #F8F6F0;
 }
 
-.order_main{
+.order_main {
     display: flex;
     align-items: center;
     height: 100%;
@@ -442,17 +442,34 @@ textarea {
     display: flex;
     align-items: center;
 }
+
 .order-two {
     width: 40%;
 }
-.main_border{
+
+.main_border {
     border-bottom: 1px solid lightgray;
 }
-.sub_border{
+
+.sub_border {
     border-top: 1px solid lightgray;
 }
 
+@media (max-width: 992px) {
+    .catlist {
+        height: 200px;
+        overflow-y: scroll;
+        padding: 10px 20px;
+        border: 1px solid lightgray;
+        background-color: #212529;
+        color: white;
+    }
+}
+
 @media (max-width: 768px) {
+    .catlist {
+        height: 150px;
+    }
     .cartborder {
         border: 1px solid lightgray;
         display: grid;

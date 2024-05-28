@@ -126,21 +126,19 @@ function Page1() {
       <Container className='py-5'>
         <Row>
           <Col className='col-0 col-lg-3'>
-            <input type="text" className='pagesearch py-2 px-3' placeholder='Search products...' onChange={(e) => setstoresearch(e.target.value)} />
+            <input type="text" className='pagesearch py-2 px-3 w-100' placeholder='Search products...' onChange={(e) => setstoresearch(e.target.value)} />
             <div className='py-4'>
               <h4 className='fw-bold' style={{ fontSize: "18px" }}>Filter By Category</h4>
               <ul className='catlist'>
-                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat) ? { color: "black" } : { color: "#C2572B", fontWeight: "900" }}>All Categories</li>
+                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat) ? { } : { color: "#C2572B", fontWeight: "900" }}>All Categories</li>
                 {
                   cat.map((item, index) => {
                     return (
-                      <li key={index} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : { color: "black" }}>{item}</li>
+                      <li key={index} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : {  }}>{item}</li>
                     )
                   })
                 }
-
               </ul>
-
             </div>
           </Col>
           <Col className='col-12 col-lg-9'>

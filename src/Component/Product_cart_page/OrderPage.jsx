@@ -143,7 +143,7 @@ function OrderPage() {
 
                                 <div className='d-flex order-main px-3'>
                                     <div className='order-one fw-bold'>Subtotal</div>
-                                    <div className='order-two sub_border py-3 px-2 fw-bold'>₹{newOrderDetails?.subTotal}</div>
+                                    <div className='order-two sub_border py-3 px-2 fw-bold'>₹{parseFloat(newOrderDetails?.subTotal0).toFixed(2)}</div>
                                 </div>
                                 <div className='d-flex order-main px-3'>
                                     <div className='order-one fw-bold'>Shipping</div>

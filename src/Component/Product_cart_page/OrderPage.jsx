@@ -134,7 +134,7 @@ function OrderPage() {
                                         return (
                                             <div key={item.id} className='d-flex order-main px-3'>
                                                 <div className='order-one'>{item.title} <span className='ps-2'>x{item.cartqty}</span> </div>
-                                                <div className='order-two py-2 px-2'>₹{item.totalprice}</div>
+                                                <div className='order-two py-2 px-2'>₹{parseFloat(item.totalprice).toFixed(2)}</div>
                                             </div>
                                         )
                                     })
@@ -143,7 +143,7 @@ function OrderPage() {
 
                                 <div className='d-flex order-main px-3'>
                                     <div className='order-one fw-bold'>Subtotal</div>
-                                    <div className='order-two sub_border py-3 px-2 fw-bold'>₹{parseFloat(newOrderDetails?.subTotal0).toFixed(2)}</div>
+                                    <div className='order-two sub_border py-3 px-2 fw-bold'>₹{parseFloat(newOrderDetails?.subTotal).toFixed(2)}</div>
                                 </div>
                                 <div className='d-flex order-main px-3'>
                                     <div className='order-one fw-bold'>Shipping</div>

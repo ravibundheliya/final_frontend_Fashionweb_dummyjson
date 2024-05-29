@@ -50,12 +50,14 @@
     border: 1px solid lightgray;
     padding: 0.5rem;
 }
-.newdataitem{
+
+.newdataitem {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid lightgray;
 }
-.stylebtn{
+
+.stylebtn {
     border: 1px solid black;
     color: white;
     background-color: black;
@@ -63,35 +65,50 @@
     letter-spacing: 2px;
     transition: .3s;
 }
-.stylebtn:hover{
+
+.stylebtn:hover {
     background-color: white;
     color: black;
 }
-.newstylebtn{
+
+.newstylebtn {
     background-color: white;
     color: black;
     font-size: 12px;
     border-radius: 0px !important;
 }
-.newstylebtn:hover{
+
+.newstylebtn:hover {
     background-color: black;
     color: white;
 }
+
 .newcss i {
     background-color: black;
     color: white;
     border-color: black;
 }
 
-.ordertable{
+.ordertable {
     width: 100%;
 }
-.ordertable tr{
+
+.ordertable tr {
     border: 1px solid lightgray;
 }
-.ordertable tr td,th{
+
+.ordertable tr td,
+th {
     border: 2px solid lightgray;
     padding: 5px;
+}
+
+.productLink {
+    color: black;
+}
+
+.productLink:hover {
+    text-decoration: underline;
 }
 
 @media (min-width: 578px) and (max-width: 990px) {
@@ -102,16 +119,23 @@
     .dataitem {
         width: 75%;
     }
+
 }
-@media (max-width: 768px){
-    .stylebtn{
-        font-size: 12px;
-    }
-    .tablecontain{
+
+@media (max-width: 992px) {
+    .tablecontain {
         overflow-x: scroll;
     }
 }
-@media (max-width: 578px){
+
+@media (max-width: 768px) {
+    .stylebtn {
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 578px) {
     .dataname {
         font-size: 12px;
         width: 25%;
@@ -122,7 +146,8 @@
         width: 75%;
         padding: 0.33rem;
     }
-    .newbtncss{
+
+    .newbtncss {
         font-size: 8px;
     }
 }

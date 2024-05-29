@@ -455,6 +455,77 @@ textarea {
     border-top: 1px solid lightgray;
 }
 
+.containColor {
+    gap: 15px;
+}
+
+.containImage {
+    height: 150px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    z-index: 1;
+    transition: .3s;
+}
+
+.containImage img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    transition: .3s;
+    z-index: 2;
+}
+
+.cntImg1:hover {
+    box-shadow: inset 0 0 25px lightgray;
+}
+
+.cntImg2:hover {
+    box-shadow: inset 0 0 25px skyblue;
+}
+
+.cntImg3:hover {
+    box-shadow: inset 0 0 25px goldenrod;
+}
+
+.cntImg4:hover {
+    box-shadow: inset 0 0 25px rgba(128, 0, 128, 0.669);
+}
+
+.containImage img:hover {
+    transform: scale(1.1);
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    position: relative;
+    width: 1em;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    transition: color .3s;
+}
+
+.rating-text {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+
 @media (max-width: 992px) {
     .catlist {
         height: 200px;
@@ -470,6 +541,7 @@ textarea {
     .catlist {
         height: 150px;
     }
+
     .cartborder {
         border: 1px solid lightgray;
         display: grid;
@@ -514,5 +586,8 @@ textarea {
     .infotab {
         width: 100px;
         font-size: 12px !important;
+    }
+    .reviewText{
+        font-size: 13px;
     }
 }

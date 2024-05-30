@@ -52,6 +52,7 @@ function OrderPage() {
     }
     const confirmOrder = () => {
         if (confirmAddress !== null) {
+            const newDate = new Date();
             const confirmData = {
                 status: "confirm",
                 products: newOrderDetails.products,
@@ -60,6 +61,7 @@ function OrderPage() {
                 shippingCharges: newOrderDetails.shippingCharges,
                 couponCode: storeCoupon,
                 grandTotal: newGrandTotal,
+                orderDate: `${newDate.getDate()}-${newDate.getMonth()+1}-${newDate.getFullYear()},${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`
             }
             navigate('/');
             dispatch(userPushOrder(confirmData))

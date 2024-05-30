@@ -23,7 +23,9 @@ function Cartpage() {
     shippingCharges: null,
     couponCode: null,
     grandTotal: null,
+    orderDate: ''
   });
+
   useEffect(() => {
     let newValue = 0;
     for (let i = 0; i < cartvalue.length; i++) {
@@ -47,6 +49,7 @@ function Cartpage() {
         shippingCharges: (subPrice < 100) ? parseFloat(shipping.current.innerText) : 0,
         couponCode: null,
         grandTotal: grandTotal,
+        orderDate: ''
       })
     }
 

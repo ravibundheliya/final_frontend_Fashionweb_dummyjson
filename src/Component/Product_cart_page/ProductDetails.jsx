@@ -203,17 +203,18 @@ function ProductDetails() {
     };
 
     const sendData = () => {
-        if (reviewText !== '' && reviewText !== 0) {
+        if (reviewText !== '' && reviewValue !== 0) {
+            const setDate = new Date();
             const storeData = {
                 comment: reviewText,
-                date: '2024-05-30',
+                date: `${setDate.toISOString()}`,
                 rating: reviewValue,
                 reviewerEmail: loguser.email,
                 reviewerName: loguser.name
             }
             setdata((prevData) => ({
                 ...prevData,
-                reviews: [...prevData.reviews, storeData]
+                reviews: [storeData, ...prevData.reviews]
             }))
             setDisReview(false);
         }

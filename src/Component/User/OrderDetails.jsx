@@ -58,7 +58,7 @@ function OrderDetails() {
                                                             </td>
                                                             <td>{item.shippingAddress.label}</td>
                                                             <td>₹ {item.grandTotal}</td>
-                                                            <td>28/05/2024 15:00 PM</td>
+                                                            <td>{(item.orderDate)}</td>
                                                         </tr>
                                                     )
                                                 })

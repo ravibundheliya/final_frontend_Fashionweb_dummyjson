@@ -10,7 +10,7 @@ const updateLocalStorage = (state) => {
     localStorage.setItem('userdata', JSON.stringify(state.value));
     localStorage.setItem('loguser', JSON.stringify(state.logindata));
 };
-var storeIndex = initialState?.value.findIndex((item) => item?.email === initialState.logindata?.email);
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -35,6 +35,7 @@ export const userSlice = createSlice({
         },
 
         resetpassword: (state, action) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             state.logindata.password = action.payload;
             if (storeIndex !== -1) {
                 state.value[storeIndex].password = state.logindata.password;
@@ -43,6 +44,7 @@ export const userSlice = createSlice({
         },
 
         addUserAddress: (state, action) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             let checkAddress = state.logindata.address.find((item) => item.label === action.payload.label);
             if (checkAddress) {
                 checkAddress.area = action.payload.area;
@@ -50,8 +52,7 @@ export const userSlice = createSlice({
                 checkAddress.country = action.payload.country;
                 checkAddress.state = action.payload.state;
                 checkAddress.postcode = action.payload.postcode;
-            }
-            else {
+            } else {
                 state.logindata.address.push(action.payload);
             }
             if (storeIndex !== -1) {
@@ -61,7 +62,8 @@ export const userSlice = createSlice({
         },
 
         deleteaddress: (state, action) => {
-            state.logindata.address = state.logindata.address.filter((item) => item.label !== action.payload)
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
+            state.logindata.address = state.logindata.address.filter((item) => item.label !== action.payload);
             if (storeIndex !== -1) {
                 state.value[storeIndex].address = state.logindata.address;
             }
@@ -69,6 +71,7 @@ export const userSlice = createSlice({
         },
 
         userpushdata: (state, action) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             const check = state.logindata.cart.find(item => item.id === action.payload.id);
             if (check) {
                 check.cartqty = action.payload.cartqty;
@@ -76,59 +79,66 @@ export const userSlice = createSlice({
             } else {
                 state.logindata.cart.push(action.payload);
             }
-
             if (storeIndex !== -1) {
                 state.value[storeIndex].cart = state.logindata.cart;
             }
             updateLocalStorage(state);
         },
+
         userdeletedata: (state, action) => {
-            state.logindata.cart = state.logindata.cart.filter((item) => item.id !== action.payload)
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
+            state.logindata.cart = state.logindata.cart.filter((item) => item.id !== action.payload);
             if (storeIndex !== -1) {
-                state.value[storeIndex].cart = state.value[storeIndex].cart.filter((item) => item.id !== action.payload);
+                state.value[storeIndex].cart = state.logindata.cart;
             }
             updateLocalStorage(state);
         },
+
         userclearall: (state) => {
-            state.logindata.cart = []
-            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email)
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
+            state.logindata.cart = [];
             if (storeIndex !== -1) {
                 state.value[storeIndex].cart = [];
             }
             updateLocalStorage(state);
         },
+
         userpushwish: (state, action) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             const check = state.logindata.wishlist.find((item) => item.id === action.payload.id);
             if (check) {
                 check.stock = action.payload.stock;
-            }
-            else {
+            } else {
                 state.logindata.wishlist.push(action.payload);
             }
-
             if (storeIndex !== -1) {
                 state.value[storeIndex].wishlist = state.logindata.wishlist;
             }
             updateLocalStorage(state);
         },
+
         userdeletewish: (state, action) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             state.logindata.wishlist = state.logindata.wishlist.filter((item) => item.id !== action.payload);
             if (storeIndex !== -1) {
-                state.value[storeIndex].wishlist = state.value[storeIndex].wishlist.filter((item) => item.id !== action.payload);
+                state.value[storeIndex].wishlist = state.logindata.wishlist;
             }
             updateLocalStorage(state);
         },
+
         userclearwish: (state) => {
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
             state.logindata.wishlist = [];
             if (storeIndex !== -1) {
                 state.value[storeIndex].wishlist = [];
             }
             updateLocalStorage(state);
         },
+
         userPushOrder: (state, action) => {
-            const check = state.logindata.orders.find((item) => item?.status === "pending")
+            const storeIndex = state.value.findIndex((item) => item.email === state.logindata.email);
+            const check = state.logindata.orders.find((item) => item?.status === "pending");
             if (check) {
-                // check.status = "confirm";
                 check.status = action.payload.status;
                 check.shippingAddress = action.payload.shippingAddress;
                 check.subTotal = action.payload.subTotal;
@@ -136,8 +146,8 @@ export const userSlice = createSlice({
                 check.shippingCharges = action.payload.shippingCharges;
                 check.couponCode = action.payload.couponCode;
                 check.grandTotal = action.payload.grandTotal;
-            }
-            else {
+                check.orderDate = action.payload.orderDate;
+            } else {
                 state.logindata.orders.push(action.payload);
             }
             if (storeIndex !== -1) {
@@ -150,7 +160,6 @@ export const userSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-
     adduser,
     loginuser,
     logoutuser,
@@ -164,7 +173,6 @@ export const {
     addUserAddress,
     deleteaddress,
     userPushOrder
-
 } = userSlice.actions;
 
 export default userSlice.reducer;

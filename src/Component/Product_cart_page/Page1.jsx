@@ -130,11 +130,11 @@ function Page1() {
             <div className='py-4'>
               <h4 className='fw-bold' style={{ fontSize: "18px" }}>Filter By Category</h4>
               <ul className='catlist'>
-                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat) ? { } : { color: "#C2572B", fontWeight: "900" }}>All Categories</li>
+                <li className='incatlist' onClick={() => setstorecat('')} style={(storecat) ? {} : { color: "#C2572B", fontWeight: "900" }}>All Categories</li>
                 {
                   cat.map((item, index) => {
                     return (
-                      <li key={index} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : {  }}>{item}</li>
+                      <li key={index} onClick={() => setstorecat(item)} className='incatlist' style={(storecat === item) ? { color: "#C2572B", fontWeight: "900" } : {}}>{item}</li>
                     )
                   })
                 }
@@ -168,7 +168,10 @@ function Page1() {
                               <Link className='card-text stretched-link text-dark fw-bolder' to={`/productpage/${item.id}`}>{item.title}</Link>
                               <div className='d-flex justify-content-around' style={{ alignItems: "center" }}>
                                 <h6 className="card-title fw-bolder" style={{ fontSize: "20px" }}>₹{item.price} <del className='text-secondary fw-light' style={{ fontSize: "14px" }}>{Math.round((item.price * 100) / (100 - item.discountPercentage))}</del></h6>
-                                <span className="rating" style={{ color: "#C2572B" }}>★<span style={{ fontSize: "14px" }}> {item.rating}</span></span>
+                                <span className="rating d-flex align-items-center" style={{ color: "#C2572B" }}>
+                                  <span>★</span>
+                                  <span className='ps-1' style={{ fontSize: "14px" }}> {item.rating}</span>
+                                </span>
                               </div>
                             </div>
                           </div>

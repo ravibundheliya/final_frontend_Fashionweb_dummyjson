@@ -27,6 +27,8 @@ function ProductDetails() {
     const [colorImg, setColorImg] = useState([]);
     const [disTitle, setDisTitle] = useState();
     const [disReview, setDisReview] = useState(false);
+    const [reviewText, setReviewText] = useState("");
+    const [reviewValue, setReviewValue] = useState(0);
 
 
 
@@ -87,7 +89,9 @@ function ProductDetails() {
         }
     }, [params.id, loguser?.cart, data.id]);
 
-
+    useEffect(() => {
+        console.log(data);
+    }, [data])
 
     const pluscart = () => {
         setqty(qty + 1)
@@ -187,14 +191,39 @@ function ProductDetails() {
     const [value, setValue] = useState(null);
     const [hover, setHover] = useState(-1);
 
-    const handleChange = (newValue) => {
-        setValue(newValue);
-    };
+
 
     const handleHover = (newHover) => {
         setHover(newHover);
     };
 
+    const handleChange = (newValue) => {
+        setValue(newValue);
+        setReviewValue(newValue);
+    };
+
+    const sendData = () => {
+        if (reviewText !== '' && reviewText !== 0) {
+            const storeData = {
+                comment: reviewText,
+                date: '2024-05-30',
+                rating: reviewValue,
+                reviewerEmail: loguser.email,
+                reviewerName: loguser.name
+            }
+            setdata((prevData) => ({
+                ...prevData,
+                reviews: [...prevData.reviews, storeData]
+            }))
+            setDisReview(false);
+        }
+        if (reviewText === '') {
+            toast("Add comment first !")
+        }
+        if (reviewValue === 0) {
+            toast("select star !")
+        }
+    }
 
     return (
         <div>
@@ -324,7 +353,7 @@ function ProductDetails() {
                                                     (disReview)
                                                         ? <div className='pb-4 d-grid reviewlist' style={{ gap: "10px" }}>
                                                             <div className='fw-bolder py-3'>Here you can review the item</div>
-                                                            <textarea name="" id="" className='p-2' style={{ color: "grey" }} placeholder='Add your experience here... *' rows={4}></textarea>
+                                                            <textarea name="" id="" className='p-2' style={{ color: "grey" }} onChange={(e) => setReviewText(e.target.value)} placeholder='Add your experience here... *' rows={4}></textarea>
                                                             <div className='d-flex justify-content-between' style={{ alignItems: "center" }}>
                                                                 {/* Rating here */}
                                                                 <div className="d-grid d-sm-flex text-center text-sm-start align-items-center">
@@ -358,7 +387,7 @@ function ProductDetails() {
                                                                         </div>
                                                                     )}
                                                                 </div>
-                                                                <button className='px-4 px-md-5 py-3 ms-3 addtobtn' onClick={()=>setDisReview(false)}>Submit</button>
+                                                                <button className='px-4 px-md-5 py-3 ms-3 addtobtn' onClick={sendData}>Submit</button>
                                                             </div>
                                                         </div>
                                                         : ''
